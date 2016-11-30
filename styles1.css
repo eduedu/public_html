@@ -1,0 +1,58 @@
+#p2 {background-color: rgba(0, 255, 0, 0.3);}
+/*body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}*/
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto"}
+/*body,h1,h2,h3,h4,h5,h6 {font-family: "Shadows Into Light"}*/
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+/* image header */
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-image: url("img/im1.jpg");
+    min-height: 100%;
+}
+
+.w3-navbar li  {
+  float: right;
+}
+.w3-navbar li a {
+  float: right;
+    padding: 10px;
+    font-size: 14px;
+}
+/*.w3-navbar li a:hover:not(.active) {*/
+.w3-navbar li a:hover {
+    /*background-color: #ffffff;*/
+    /*opacity: 0.9;*/
+    /*color: #faa41b;*/
+    /*color: rgba(255, 255, 0, 5.0);*/
+    color:#fff;
+    background-color: rgba(255, 255, 0, 0.0);
+}
+.active {
+    /*background-color: #000;*/
+    border-bottom:5px solid #f05059;
+
+}
+.mySlides {
+  display:none;
+  background-size: cover;
+  min-height: 100%;
+}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+/*-------side*/
+.w3-sidenav a:hover {
+    /*background-color: #ffffff;*/
+    /*opacity: 0.9;*/
+    /*color: #faa41b;*/
+    /*color: rgba(255, 255, 0, 5.0);*/
+    color:#fff;
+    background-color: rgba(255, 255, 0, 0.350);
+    /*border-bottom:5px solid #f05059;*/
+}
+
+/*---------------------------------------------------------------------------------------------*/

@@ -7,12 +7,40 @@ body, html {
     height: 100%;
     line-height: 1.8;
 }
+a.anchor {
+    display: block;
+    position: relative;
+    top: -42px;
+    visibility: hidden;
+}
 /* image header */
 .bgimg-1 {
+    /*filter:grayscale(85%);*/
     background-position: center;
     background-size: cover;
-    background-image: url("img/im1.jpg");
+    background-image: url("img/inicio10.jpg");
     min-height: 100%;
+}
+.bgimg-2 {
+    /*filter:grayscale(85%);*/
+    background-position: center;
+    background-size: cover;
+    /*background-color: #000;*/
+    min-height: 100%;
+}
+
+.rb {
+  font-family: 'Roboto', sans-serif;
+font-weight: bold;
+}
+.rn {
+  font-family: 'Roboto', sans-serif;
+  /*font-weight: bold;*/
+}
+
+.tangerine {
+  font-family: 'Tangerine', serif;
+  font-weight: bold;
 }
 
 .w3-navbar li  {
@@ -30,7 +58,10 @@ body, html {
     /*color: #faa41b;*/
     /*color: rgba(255, 255, 0, 5.0);*/
     color:#fff;
-    background-color: rgba(255, 255, 0, 0.0);
+    /*background-color: rgba(255, 255, 0, 0.0);*/
+    /*background-color: #dedddd;*/
+    background-color: #3e61ad;
+
 }
 .active {
     /*background-color: #000;*/
@@ -43,7 +74,7 @@ body, html {
   min-height: 100%;
 }
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
-.w3-badge {height:13px;width:13px;padding:0}
+.w3-badge {height:16px;width:16px;padding:0}
 /*-------side*/
 .w3-sidenav a:hover {
     /*background-color: #ffffff;*/
@@ -51,8 +82,13 @@ body, html {
     /*color: #faa41b;*/
     /*color: rgba(255, 255, 0, 5.0);*/
     color:#fff;
-    background-color: rgba(255, 255, 0, 0.350);
+    /*background-color: rgba(255, 255, 0, 0.350);*/
+    background-color: #3e61ad;
     /*border-bottom:5px solid #f05059;*/
+}
+.flecha {
+  /*font-size: 50px;*/
+  text-shadow: 1px 1px 4px #000000;
 }
 
 /*---------------------------------------------------------------------------------------------*/

@@ -264,7 +264,15 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-hover-none:hover{box-shadow:none!important;background-color:transparent!important}
 /* Colors */
 .col-salmon,.col-hover-salmon:hover{color:#fff!important;background-color:#f05059!important}
+.col-azul,.col-hover-azul:hover{color:#fff!important;background-color:#3e61ad!important}
+.col-amarillo,.col-hover-amarillo:hover{color:#fff!important;background-color:#faa41b!important}
+.col-amarillo2,.col-hover-amarillo2:hover{color:#fff!important;background-color:#e3a93e!important}
+.col-gris1,.col-hover-gris1:hover{color:#fff!important;background-color:#4d4d4d!important}
+.col-gris4,.col-hover-gris4:hover{color:#fff!important;background-color:#dedddd!important}
 .col-text-salmon,.col-hover-text-salmon:hover{color:#f05059!important}
+.col-text-gris1,.col-hover-text-gris1:hover{color:#4d4d4d!important}
+.col-text-gris3,.col-hover-text-gris3:hover{color:#989898!important}
+.col-text-gris4,.col-hover-text-gris4:hover{color:#dedddd!important}
 .w3-amber,.w3-hover-amber:hover{color:#000!important;background-color:#ffc107!important}
 .w3-aqua,.w3-hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
 .w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:#2196F3!important}

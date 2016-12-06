@@ -24,12 +24,13 @@
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!-- Navbar (sit on top)   -->
+<!-- Navbar +  -->
 <div class="w3-top">
   <ul class="w3-navbar w3-card-2 w3-theme" id="myNavbar">
     <li>
       <!--<a href="#home" class="w3-wide">MiAuto Plan</a>-->
-      <a href="#home" style='padding:0px;margin-left:20px' class="w3-display-left" onclick="activarMenu(0)" id="logoBarra" >
+      <a href="#home" style='padding:0px;margin-left:20px' class="w3-display-left"
+        onclick="activarMenu(0)" id="logoBarra" >
         <img src="img/logo256.png"  height="55px" width="55px">
       </a>
     </li>
@@ -37,15 +38,15 @@
     <li class="w3-right w3-hide-small" id="barraMenuOpciones">
       <a href="#contact" class='menu1 ' onclick="activarMenu(0)"><i class="fa fa-user"></i> Ingresar</a>
       <a href="#contacto" class='menu1 ' onclick="activarMenu(1)"><i class="fa fa-envelope"></i> CONTACTO</a>
-      <a href="#pricing" class='menu1 ' onclick="activarMenu(2)"><i class="fa fa-question-circle-o"></i> FAQ</a>
+      <a href="#aFaq" class='menu1 ' onclick="activarMenu(2)"><i class="fa fa-question-circle-o"></i> FAQ</a>
       <a href="#nosotros" class='menu1' onclick="activarMenu(3)"><i class="fa fa-car"></i> NOSOTROS</a>
       <a href="#work" class='menu1 ' onclick="activarMenu(4)">  <i class="fa fa-th"></i> CATÁLOGO</a>
-      <a href="#noticias" class='menu1 ' onclick="activarMenu(5)"><i class="fa fa-home"></i> INICIO</a>
+      <a href="#aNoticias" class='menu1 ' onclick="activarMenu(5)"><i class="fa fa-home"></i> INICIO</a>
     </li>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
     <li>
       <a href="javascript:void(0)" class="w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-        <i class="fa fa-bars w3-padding-right w3-padding-left"></i>
+        <i id='barraMenu' class="fa fa-bars w3-padding-right w3-padding-left"></i>
       </a>
     </li>
   </ul>
@@ -69,13 +70,14 @@ function activarMenu(n) {
   //x[slideIndex-1].style.display = "block";
   //dots[slideIndex-1].className += " w3-theme-l4";
   x[n].className += " active";
+  //window.scrollBy(0, 500);
 }
 </script>
-<!-- Sidenav on small screens when clicking the menu icon -->
-<style>
-</style>
-<nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidenav">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">x Cerrar</a>
+
+<!-- SIDEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
+<nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-left w3-hide-medium w3-hide-large"
+  style="display:none" id="mySidenav">
+  <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">x Cerrar</a>-->
   <a href="#noticias" onclick="w3_close()"><i class="fa fa-home"></i> INICIO</a>
   <a href="#work" onclick="w3_close()"><i class="fa fa-th"></i> CATÁLOGO</a>
   <a href="#nosotros" onclick="w3_close()"><i class="fa fa-car"></i> NOSOTROS</a>
@@ -85,43 +87,55 @@ function activarMenu(n) {
 
 </nav>
 <!-- /////////////////////////////////////////////// secciones ///////////////////////// /-->
-
-
-
-<!--<div class="w3-content w3-display-container" style="max-width:800px">-->
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-
 
 <!-- ///////////////////////// CATALOGO /////////////////////////////////////// -->
 <div class="col-gris1 w3-display-container" style="" align="center">
-<div class="col-gris1  w3-row w3-display-container" style="max-width:800px;padding-top:40px;padding-bottom:0px">
-  <img class="mySlides " src="img/inicio13.jpg" style="width:100%">
-  <img class="mySlides" src="img/im2.jpg" style="width:100%">
-  <img class="mySlides" src="img/im3.jpg" style="width:100%">
-  <div class="w3-center w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-    <div class="w3-left w3-padding-left flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(-1)">&#10094;</div>
-    <div class="w3-right w3-padding-right flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(1)">&#10095;</div>
-    <span class="w3-badge demo w3-border w3-transparent col-hover-text-salmon"
-      style="margin-bottom:0x"
-      onclick="currentDiv(1)"></span>
-    <span class="w3-badge demo w3-border w3-transparent col-hover-text-salmon" onclick="currentDiv(2)"></span>
-    <span class="w3-badge demo w3-border w3-transparent col-hover-text-salmon" onclick="currentDiv(3)"></span>
+<!--<div class="w3-content w3-display-container" style="max-width:800px">-->
+<div class="col-gris1  w3-row w3-display-container" style="max-width:800px;padding-top:40px;padding-bottom:0px"
+  onmouseover="mOver()" onmouseout="mOut()">
+  <img class="mySlides w3-animate-opacity" src="img/inicio13.jpg" style="width:100%">
+  <!--<iframe class='mySlides w3-animate-opacity'  style="width:100%;height:auto" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe>-->
+  <img class="mySlides w3-animate-opacity" src="img/im2.jpg" style="width:100%">
+  <img class="mySlides w3-animate-opacity" src="img/im3.jpg" style="width:100%">
+  <div class="w3-center w3-text-white " style="width:100%">
+    <div id='flechaIz' class=" w3-xxxlarge w3-display-left w3-left w3-padding-left flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(-1)">&#10094;</div>
+    <div id='flechaDe' class=" w3-xxxlarge w3-display-right w3-right w3-padding-right flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(1)">&#10095;</div>
+    <div class='w3-display-bottommiddle w3-padding-12'>
+      <span class="w3-badge demo  col-gris1 col-hover-text-salmon" style="margin-bottom:0x" onclick="currentDiv(1)"></span>
+      <span class="w3-badge demo  col-gris1 col-hover-text-salmon" onclick="currentDiv(2)"></span>
+      <span class="w3-badge demo  col-gris1 col-hover-text-salmon" onclick="currentDiv(3)"></span>
+    </div>
   </div>
 </div>
 </div>
 <script>
+
+var flechaIz=document.getElementById('flechaIz');
+var flechaDe=document.getElementById('flechaDe');
+function mOver() {
+    flechaIz.style.display = "block";
+    flechaDe.style.display = "block";
+}
+function mOut() {
+    flechaIz.style.display = "none";
+    flechaDe.style.display = "none";
+}
+
 var slideIndex = 1;
 showDivs(slideIndex);
 
+myVar = setInterval(hacerSlide, 5000);
+function hacerSlide(){
+  slideIndex++;
+  showDivs(slideIndex);
+}
 function plusDivs(n) {
   showDivs(slideIndex += n);
 }
-
 function currentDiv(n) {
   showDivs(slideIndex = n);
 }
-
 function showDivs(n) {
   var i;
   var x = document.getElementsByClassName("mySlides");
@@ -139,7 +153,7 @@ function showDivs(n) {
 }
 </script>
 <!-- ///////////////////////// Link PLAY Store /////////////////////////////////////// -->
-<div align='center' style="padding:-20px" >
+<div align='center' style="" class='w3-white w3-display-container' >
 <div class="w3-container w3-display-container  w3-centered w3-container col-amarillo2 w3-padding-8"
   align='center' id="playstore" style="max-width:500px">
   <div class="w3-center w3-centered">
@@ -152,14 +166,43 @@ function showDivs(n) {
 </div>
 
 <!-- ///////////////////////// INICIO-NOTICIAS /////////////////////////////////////// -->
+<a class="anchor" id="aNoticias"></a>
 <div class="w3-container w3-display-container " align='center' id="noticias" >
   <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">NOTICIAS</span></h5>
   <div class="w3-container w3-section  ">
+    <img id='loaderNoticias' src="img/loader.gif" class="w3-round  " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
     <div id="foo" class=' w3-left-align'  style="max-width:800px" >
-      <ul id="lista" >
+      <ul id="lista" class='w3-ul ' >
       </ul>
     </div>
-    <input id='botonLista' type="button" class="w3-btn col-gris1 w3-center" value="Cargar más >>">
+
+    <input id='btnCargarMas' type="button" class="w3-btn col-gris1 w3-center" value="  Cargar más  >>  ">
+  </div>
+</div>
+
+<!-- ///////////////////////// FAQ /////////////////////////////////////// -->
+<a class="anchor" id="aFaq"></a>
+<div class="w3-container w3-display-container col-gris4" align='center' id="faq" >
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px">
+    <span  class=" w3-padding-8 col-azul w3-tag w3-wide "> FAQ <BR> Preguntas Frecuentas</span></h5>
+    <div class="w3-container w3-section  ">
+      <div id="" class=' w3-left-align w3-text-black'  style="max-width:800px;padding:0px" >
+        <h5 class='rb'>¿Pregunta 1 como descargar la app?</h5>
+        <h6 class='rn'> Etiam faucibus aliquet aliquet. Pellentesque placerat est eget est hendrerit dignissim. Nullam sit amet molestie lectus. Integer a feugiat mi.
+        </h6>
+        <h5 class='rb'>¿Pregunta 2: como pido un asesor?</h5>
+        <h6 class='rn'> Integer a ante sagittis, cursus magna eu, ultrices sem. Duis venenatis velit nec cursus aliquam. Aliquam at ipsum sit amet nulla vehicula posuere quis sed ante.
+        </h6>
+        <h5 class='rb'>¿Pregunta 3: como pido mi auto?</h5>
+        <h6 class='rn'> Suspendisse vitae commodo nulla. Sed ornare justo lorem, a malesuada sem vehicula sit amet.
+        </h6>
+        <h5 class='rb'>¿Pregunta 4?</h5>
+        <h6 class='rn'> Morbi fringilla erat a ex facilisis, non maximus velit euismod. Duis molestie ligula vestibulum lectus scelerisque, ac sagittis tellus sagittis. Mauris vel massa eget libero semper imperdiet rutrum sed ligula. Pellentesque imperdiet nibh ac neque euismod, eu pulvinar ligula varius.
+        </h6>
+        <h5 class='rb'>¿Pregunta 5 ubicacion de la oficina, contacto, responsables, legales ?</h5>
+        <h6 class='rn'> Nulla eget urna consectetur, imperdiet est non, porttitor mauris. Pellentesque vehicula purus risus, et vehicula tortor pulvinar at.
+        </h6>
+    </div>
   </div>
 </div>
 
@@ -285,7 +328,7 @@ function showDivs(n) {
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
     <i class="fa fa-linkedin w3-hover-text-indigo"></i>
   </div>
-  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+
 </footer>
 
 <!-- Add Google Maps -->
@@ -335,7 +378,26 @@ function w3_open() {
     }
 }
 
-// Close the sidenav with the close button
+var sideBar = document.getElementById('mySidenav');
+var barraMenu = document.getElementById('barraMenu');
+
+
+window.onclick = function(event) {
+  //console.log('click ventana');
+  //console.log('event target:'+ event.target.id);
+  //console.log('       modal:'+ sideBar);
+  if (event.target!= sideBar && event.target.id !='barraMenu' && mySidenav.style.display == 'block') {
+    //modal.style.display = "none";
+    //mySidenav.style.display = "none";
+    w3_close();
+  //if (mySidenav.style.display === 'block') {
+      //mySidenav.style.display = 'none';
+//      console.log('ocultar barra');
+  //} else {
+      //mySidenav.style.display = 'block';
+  //}
+  }
+}
 function w3_close() {
     mySidenav.style.display = "none";
 }

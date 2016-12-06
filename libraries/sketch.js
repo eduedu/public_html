@@ -4,8 +4,9 @@ var slide;
 var navBar;
 var barraMenuOpciones;
 var logoBarra;
+var loaderNoticias;
 
-var botonLista;
+var btnCargarMas;
 var actualizarLista=0;
 function setup() {
   //createCanvas(640, 480);
@@ -34,9 +35,11 @@ function setup() {
   navBar=select('#myNavbar')
   barraMenuOpciones=select('#barraMenuOpciones')
   logoBarra=select('#logoBarra');
+  loaderNoticias=select('#loaderNoticias');
+  loaderNoticias.hide();
 
-  botonLista=select('#botonLista');
-  botonLista.mousePressed(poblarLista);
+  btnCargarMas=select('#btnCargarMas');
+  //btnCargarMas.mousePressed(poblarLista);
   poblarLista();
   //windowResized();
 }
@@ -55,6 +58,7 @@ function poblarLista(){
 
   // Add the contents of options[0] to #foo:
   if(actualizarLista==0){
+    loaderNoticias.show();
     document.getElementById('foo').appendChild(makeUL(cars));
     actualizarLista=1;
     var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec'+
@@ -96,6 +100,7 @@ function callbackJson(datos){
   }
   resetLista();
   cargarLista(lineas, arrayNoticias);
+  loaderNoticias.hide();
 }
 function formatFecha(fecha){
   var d = new Date(fecha)
@@ -136,7 +141,7 @@ function cargarLista(lineas, array) {
     //lista.class('w3-ul');
     //lista.className += " w3-ul w3-center";
     var lista=document.getElementById("lista");
-    lista.className += " w3-ul w3-border";
+    lista.className += " w3-ul ";
 
     for(var i = lineas; i >0; i--) {
       if(array[i][0]!="-"){
@@ -171,7 +176,7 @@ function makeUL(array) {
     //lista.class('w3-ul');
     //lista.className += " w3-ul w3-center";
     var lista=document.getElementById("lista");
-    lista.className += " w3-ul w3-border";
+    lista.className += " w3-ul ";
     for(var i = 0; i < array.length; i++) {
         // Create the list item:
         var item = document.createElement('li');

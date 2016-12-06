@@ -36,12 +36,13 @@
     </li>
     <!-- Right-sided navbar links -->
     <li class="w3-right w3-hide-small" id="barraMenuOpciones">
-      <a href="#contact" class='menu1 ' onclick="activarMenu(0)"><i class="fa fa-user"></i> Ingresar</a>
-      <a href="#contacto" class='menu1 ' onclick="activarMenu(1)"><i class="fa fa-envelope"></i> CONTACTO</a>
-      <a href="#aFaq" class='menu1 ' onclick="activarMenu(2)"><i class="fa fa-question-circle-o"></i> FAQ</a>
-      <a href="#nosotros" class='menu1' onclick="activarMenu(3)"><i class="fa fa-car"></i> NOSOTROS</a>
-      <a href="#work" class='menu1 ' onclick="activarMenu(4)">  <i class="fa fa-th"></i> CATÁLOGO</a>
-      <a href="#aNoticias" class='menu1 ' onclick="activarMenu(5)"><i class="fa fa-home"></i> INICIO</a>
+      <a class='menu1 ' onclick="activarMenu(0)"><i class="fa fa-user"></i> Ingresar</a>
+      <a class='menu1 ' onclick="activarMenu(1);goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
+      <a class='menu1 ' onclick="activarMenu(2);goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
+      <a class='menu1' onclick="activarMenu(3)"><i class="fa fa-car"></i> NOSOTROS</a>
+      <a class='menu1 ' onclick="activarMenu(4)">  <i class="fa fa-th"></i> CATÁLOGO</a>
+      <!--<a href="#aNoticias" class='menu1 ' onclick="activarMenu(5)"><i class="fa fa-home"></i> INICIO</a>-->
+      <a class='menu1 ' onclick="activarMenu(5);goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a>
     </li>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
     <li>
@@ -52,8 +53,9 @@
   </ul>
 </div>
 <script>
-var menuIndex = 1;
-activarMenu(menuIndex);
+
+//var menuIndex = 1;
+//activarMenu(menuIndex);
 
 function activarMenu(n) {
   var i;
@@ -70,7 +72,11 @@ function activarMenu(n) {
   //x[slideIndex-1].style.display = "block";
   //dots[slideIndex-1].className += " w3-theme-l4";
   x[n].className += " active";
+  //document.getElementById('aNoticias').scrollIntoView(true);
   //window.scrollBy(0, 500);
+}
+function goTo(anchor){
+  document.getElementById(anchor).scrollIntoView(true);
 }
 </script>
 
@@ -78,12 +84,12 @@ function activarMenu(n) {
 <nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-left w3-hide-medium w3-hide-large"
   style="display:none" id="mySidenav">
   <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">x Cerrar</a>-->
-  <a href="#noticias" onclick="w3_close()"><i class="fa fa-home"></i> INICIO</a>
-  <a href="#work" onclick="w3_close()"><i class="fa fa-th"></i> CATÁLOGO</a>
-  <a href="#nosotros" onclick="w3_close()"><i class="fa fa-car"></i> NOSOTROS</a>
-  <a href="#pricing" onclick="w3_close()"><i class="fa fa-question-circle-o"></i> FAQ</a>
-  <a href="#pricing" onclick="w3_close()"><i class="fa fa-envelope"></i> CONTACTO</a>
-  <a href="#contact" style="padding-top:20px" onclick="w3_close()"><i class="fa fa-user"></i> Ingresar</a>
+  <a onclick="w3_close();goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a>
+  <a onclick="w3_close()"><i class="fa fa-th"></i> CATÁLOGO</a>
+  <a onclick="w3_close()"><i class="fa fa-car"></i> NOSOTROS</a>
+  <a onclick="w3_close();goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
+  <a onclick="w3_close();goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
+  <a style="padding-top:20px" onclick="w3_close()"><i class="fa fa-user"></i> Ingresar</a>
 
 </nav>
 <!-- /////////////////////////////////////////////// secciones ///////////////////////// /-->
@@ -92,19 +98,35 @@ function activarMenu(n) {
 <!-- ///////////////////////// CATALOGO /////////////////////////////////////// -->
 <div class="col-gris1 w3-display-container" style="" align="center">
 <!--<div class="w3-content w3-display-container" style="max-width:800px">-->
-<div class="col-gris1  w3-row w3-display-container" style="max-width:800px;padding-top:40px;padding-bottom:0px"
+<!--<div class="col-gris1  w3-row w3-display-container" style="max-width:800px;padding-top:40px;padding-bottom:0px"-->
+<div class="col-gris1  w3-row w3-display-container" style="padding-top:40px;padding-bottom:0px"
   onmouseover="mOver()" onmouseout="mOut()">
-  <img class="mySlides w3-animate-opacity" src="img/inicio13.jpg" style="width:100%">
   <!--<iframe class='mySlides w3-animate-opacity'  style="width:100%;height:auto" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe>-->
-  <img class="mySlides w3-animate-opacity" src="img/im2.jpg" style="width:100%">
-  <img class="mySlides w3-animate-opacity" src="img/im3.jpg" style="width:100%">
+  <img class="mySlides w3-animate-opacity" src="img/imwide1.jpg" style="width:100%">
+  <img class="mySlides w3-animate-opacity" src="img/imwide2.jpg" style="width:100%">
+  <img class="mySlides w3-animate-opacity" src="img/imwide3.jpg" style="width:100%">
+  <!--TEXTO sobre las imagenes
+  <div class="w3-display-topright  w3-text-white "
+    style='margin-top:45px' align='right'>
+    <span class="w3-xxlarge w3-hide-small alfa50">
+      Tu próximo auto, al alcance de tus manos.</span>
+    <span class="w3-xlarge w3-hide-large w3-hide-medium alfa50">
+      Tu próximo auto, al alcance de tus manos.</span>
+    <BR>
+    <span class=" col-text-salmon alfa50 " style=''>
+      Primer sistema de capitalización por referidos de la Argentina.</span>
+  </div>
+    -->
+    <!--<p><a href="#about" class="w3-btn col-salmon w3-padding-large w3-large w3-margin-top w3-opacity-max w3-hover-opacity-off w3-tooltip" >
+      Empezá Ahora</a></p>-->
+
   <div class="w3-center w3-text-white " style="width:100%">
     <div id='flechaIz' class=" w3-xxxlarge w3-display-left w3-left w3-padding-left flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(-1)">&#10094;</div>
     <div id='flechaDe' class=" w3-xxxlarge w3-display-right w3-right w3-padding-right flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(1)">&#10095;</div>
     <div class='w3-display-bottommiddle w3-padding-12'>
-      <span class="w3-badge demo  col-gris1 col-hover-text-salmon" style="margin-bottom:0x" onclick="currentDiv(1)"></span>
-      <span class="w3-badge demo  col-gris1 col-hover-text-salmon" onclick="currentDiv(2)"></span>
-      <span class="w3-badge demo  col-gris1 col-hover-text-salmon" onclick="currentDiv(3)"></span>
+      <span class="w3-badge demo  col-gris3 col-hover-text-salmon" onclick="currentDiv(1)"></span>
+      <span class="w3-badge demo  col-gris3 col-hover-text-salmon" onclick="currentDiv(2)"></span>
+      <span class="w3-badge demo  col-gris3 col-hover-text-salmon" onclick="currentDiv(3)"></span>
     </div>
   </div>
 </div>
@@ -170,13 +192,16 @@ function showDivs(n) {
 <div class="w3-container w3-display-container " align='center' id="noticias" >
   <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">NOTICIAS</span></h5>
   <div class="w3-container w3-section  ">
-    <img id='loaderNoticias' src="img/loader.gif" class="w3-round  " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
+    <div id='loaderNoticias'>
+      <p> Cargando noticias... </p>
+      <img  src="img/loader.gif" class="w3-round  " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
+    </div>
     <div id="foo" class=' w3-left-align'  style="max-width:800px" >
       <ul id="lista" class='w3-ul ' >
       </ul>
     </div>
 
-    <input id='btnCargarMas' type="button" class="w3-btn col-gris1 w3-center" value="  Cargar más  >>  ">
+    <input id='btnCargarMas' type="button" class="w3-btn col-gris1 w3-center" value="  Cargar más  >>  " style='display:none'>
   </div>
 </div>
 
@@ -206,110 +231,32 @@ function showDivs(n) {
   </div>
 </div>
 
-<!-- ///////////////////////// HOME /////////////////////////////////////// -->
-
-<header class="bgimg-1 w3-display-container  " id="home">
-<!--
-<header class="w3-display-container  " id="home">
-  <img src="img/inicio1.jpg"  style='min-height:100%;width:100%;filter:grayscale(80%)' >-->
-  <div class="w3-display-bottomleft w3-padding w3-text-white"
-    style='text-shadow:1px 1px 1px #000000;margin-top:55px'>
-    <span class="w3-xxxlarge w3-hide-small ">
-      Tu próximo auto, al alcance de tus manos.</span><br>
-    <span class="w3-xxlarge w3-hide-large w3-hide-medium ">
-      Tu próximo auto, al alcance de tus manos.</span><br>
-
-    <span class="w3-large col-text-salmon" style='text-shadow:1px 1px 1px #000000;'>
-      Primer sistema de capitalización por referidos de la Argentina.</span>
-    <!--<p><a href="#about" class="w3-btn col-salmon w3-padding-large w3-large w3-margin-top w3-opacity-max w3-hover-opacity-off w3-tooltip" >
-      Empezá Ahora</a></p>-->
-  </div>
-  <!--
-  <div class="w3-display-bottomright  w3-padding w3-text-grey w3-large">
-  </div>
-  <div class="w3-display-bottomleft w3-padding w3-text-grey w3-large">
-    <a href="#" class="w3-hover-text-white"><i class="fa fa-facebook-official"></i></a>
-  </div>
-  -->
-</header>
-
-<!-- About Section -->
-<div class="w3-container " id="about">
-  <h3 class="w3-center col-text-salmon">ABOUT THE COMPANY</h3>
-  <p class="w3-center w3-large">Key features of our company</p>
-  <div class="w3-row-padding w3-center" style="margin-top:64px">
-    <div class="w3-quarter">
-      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-      <p class="w3-large">Responsive</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-    <div class="w3-quarter">
-      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
-      <p class="w3-large">Passion</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-    <div class="w3-quarter">
-      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
-      <p class="w3-large">Design</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-    <div class="w3-quarter">
-      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
-      <p class="w3-large">Support</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-  </div>
-</div>
 
 
-
-<!-- Team Section -->
-<div class="w3-container w3-padding-128" id="nosotros">
-  <h3 class="w3-center">THE TEAM</h3>
-  <p class="w3-center w3-large">The ones who runs this company</p>
-</div>
-
-
-
-<!-- Work Section -->
-<div class="w3-container w3-padding-128" id="work">
-  <h3 class="w3-center">OUR WORK</h3>
-  <p class="w3-center w3-large">What we've done for people</p>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-closebtn w3-text-white w3-opacity w3-hover-opacity-off w3-xxlarge w3-container w3-display-topright" title="Close Modal Image">×</span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-
-
-
-
-<!-- Contact Section -->
-<div class="w3-container w3-padding-128 w3-light-grey" id="contacto">
-  <h3 class="w3-center">CONTACT</h3>
-  <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
-  <div class="w3-row-padding" style="margin-top:64px">
-    <div class="w3-half">
-      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Chicago, US</p>
-      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
-      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
-      <br>
-      <form action="form.asp" target="_blank">
-        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+<!-- //////////////////////////////////////// CONTACTO ///////////////////////////-->
+<a class="anchor" id="aContacto"></a>
+<div class="w3-container w3-display-container  col-gris4 w3-text-black" align='center' id="contacto">
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px">
+    <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">CONTACTO</span></h5>
+  <!--<h3 class="w3-center">INFORMACIÓN DE CONTACTO</h3>-->
+  <p class="w3-center w3-large">Ingrese sus datos y nos comunicaremos con usted a la brevedad. </p>
+  <div class="w3-row-padding" style="margin-top:20px">
+    <div class="w3-half w3-left" align='left'>
+      <!--<form action="form.asp" target="_blank"> -->
+        <p><input class="w3-input w3-border" type="text" placeholder="Nombre" required name="Nombre"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Número de Teléfono" required name="Numero"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" required name="Mensaje"></p>
         <p>
-          <button class="w3-btn w3-padding" type="submit">
-            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          <button class="w3-btn w3-padding w3-right col-azul" type="submit" align='right'>
+            <i class="fa fa-paper-plane"></i>  ENVIAR
           </button>
         </p>
-      </form>
+        <br>
+        <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> C. Pellegrini 1140, Corrientes</p>
+        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> (0379) 44.....</p>
+        <p><i class="fa fa-mobile-phone fa-fw w3-xxlarge w3-margin-right"></i> 379 (15) 4......</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> contacto@miautoplan.com</p>
+      <!--</form>-->
     </div>
     <div class="w3-half">
       <!-- Add Google Maps -->
@@ -332,11 +279,12 @@ function showDivs(n) {
 </footer>
 
 <!-- Add Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
 
 <script>
 <!-- Google Map Location -->
-var myCenter = new google.maps.LatLng(-27.465403, -58.835940);
+var myCenter = new google.maps.LatLng(-27.4654675,-58.8359838);
+//var myCenter = new google.maps.geo
 
 function initialize() {
 var mapProp = {

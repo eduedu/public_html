@@ -30,15 +30,16 @@ function setup() {
   greeting = createElement('h1', 'what is your name?');
   greeting.position(20, 5);
   */
+  loaderNoticias=select('#loaderNoticias');
+  loaderNoticias.hide();
+  btnCargarMas=select('#btnCargarMas');
+  btnCargarMas.hide();
 
   slide=selectAll('.mySlides')
   navBar=select('#myNavbar')
   barraMenuOpciones=select('#barraMenuOpciones')
   logoBarra=select('#logoBarra');
-  loaderNoticias=select('#loaderNoticias');
-  loaderNoticias.hide();
 
-  btnCargarMas=select('#btnCargarMas');
   //btnCargarMas.mousePressed(poblarLista);
   poblarLista();
   //windowResized();
@@ -59,7 +60,7 @@ function poblarLista(){
   // Add the contents of options[0] to #foo:
   if(actualizarLista==0){
     loaderNoticias.show();
-    document.getElementById('foo').appendChild(makeUL(cars));
+    //document.getElementById('foo').appendChild(makeUL(cars));
     actualizarLista=1;
     var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec'+
       '?action=getCeldas';
@@ -101,6 +102,7 @@ function callbackJson(datos){
   resetLista();
   cargarLista(lineas, arrayNoticias);
   loaderNoticias.hide();
+  btnCargarMas.show();
 }
 function formatFecha(fecha){
   var d = new Date(fecha)

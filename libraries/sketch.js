@@ -3,14 +3,15 @@ var input, button, greeting;
 var slide;
 var navBar;
 var barraMenuOpciones;
-var logoBarra;
+//var logoBarra;
 var loaderNoticias;
-var lineasNoticiasTotales=2;
-var incrementoNoticias=1;
+var lineasNoticiasTotales=5;
+var incrementoNoticias=3;
 var noticias;
 
 var btnCargarMas;
 var actualizarLista=0;
+var btnIngresar;
 function setup() {
   //createCanvas(640, 480);
   /*
@@ -19,63 +20,76 @@ function setup() {
   canvas.style('z-index','-1');
   //background(62, 97, 173);
   noStroke();
-
-  input = createInput();
-  input.position(20, 65);
-  input2 = createInput();
-  input2.position(20, 105);
-
-  button = createButton('submit');
-  button.position(150, 145);
-  //button.mousePressed(greet);
-  button.mousePressed(testDomW3);
-
-  greeting = createElement('h1', 'what is your name?');
-  greeting.position(20, 5);
   */
   loaderNoticias=select('#loaderNoticias');
   loaderNoticias.hide();
   btnCargarMas=select('#btnCargarMas');
-  btnCargarMas.mousePressed(cargarMas);
+  btnCargarMas.mousePressed(cargarMasClick);
   btnCargarMas.hide();
 
   slide=selectAll('.mySlides')
   navBar=select('#myNavbar')
   barraMenuOpciones=select('#barraMenuOpciones')
-  logoBarra=select('#logoBarra');
-  logoBarra.mousePressed(testGet);
-  //btnCargarMas.mousePressed(poblarLista);
-  poblarLista();
+  //logoBarra=select('#logoBarra');
+  //logoBarra.mousePressed(testGet);
+
+  btnIngresar=select('#btnIngresar');
+  btnIngresar.mousePressed(ingresarClick);
+
   //windowResized();
+  poblarLista();
+  //ingresarClick();
 }
 
-var options = [
-        set0 = ['Option 1','Option 2'],
-        set1 = ['First Option','Second Option','Third Option']
-    ];
-
-//var cars = ["Saab", "Volvo", "BMW"];
-var cars = ["Cargando noticas..."];
-
-function testGet() {
-  var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?action=wgu&a=3794439000';
+function ingresarClick(){
+  loaderNoticias.show();
   //var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec?action=getCeldas';
+  var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?'
+  +'action=wgu&a=3794950807';
+
   loadJSON(url, cbTest, errCb);
 
-}
-function cbTest(datos){
-  //console.log('rta:' + datos);
-  //console.log('nombre:' + datos.nom);
-  //console.log('num:' + datos.num);
-  for(item in datos){
-    //console.log(datos[item].key+'-'+datos[item].value);
-    console.log(item +'-'+datos[item]);
+  function cbTest(datos){
+    //console.log('rta:' + datos);
+    //console.log('nombre:' + datos.nom);
+    //console.log('num:' + datos.num);
+    for(item in datos){
+      //console.log(datos[item].key+'-'+datos[item].value);
+      //console.log(item +'-'+datos[item]);
+    }
+    //console.log(datos.noticias);
+    callbackJson(datos.noticias);
+    var miCuenta=document.getElementById('miCuenta');
+    var miCuentaDatos=document.getElementById('miCuentaDatos');
+    var htmlRendered=htmlRender(datos.auto);
+    miCuentaDatos.insertAdjacentHTML("beforeend",htmlRendered);
+    //console.log(datos.auto.url1);
+    document.getElementById('url0').src=datos.auto.url1;
+    document.getElementById('url1').src=datos.auto.url1;
+    document.getElementById('url2').src=datos.auto.url2;
+    document.getElementById('url3').src=datos.auto.url3;
+    document.getElementById('url4').src=datos.auto.url4;
+    document.getElementById('menuIngresar').style.display='none';
+    document.getElementById('menuMiCuenta').style.display='block';
+    miCuenta.style.display='block';
+    document.getElementById('aMiCuenta').scrollIntoView(true);
+    document.getElementById('id01').style.display='none';
+    function htmlRender(auto){
+      var s='';
+      s='<p>Modelo:'+auto.nombre+'</p>';
+      s+='<p>Descripcion:'+auto.descripcion+'</p>';
+      s+='<p>Precio:'+auto.precio+'</p>';
+      s+='<p>Llaves:'+auto.llaves+'</p>';
+      return s;
+    }
+  }
+  function errCb(err){
+    console.log('Error:');
+    console.log(err);
+    document.getElementById('id01').style.display='none';
   }
 }
-function errCb(err){
-  console.log('Error:');
-  console.log(err);
-}
+
 
 function poblarLista(){
   //json url
@@ -85,7 +99,7 @@ function poblarLista(){
     //document.getElementById('foo').appendChild(makeUL(cars));
     actualizarLista=1;
     var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec'+
-      '?action=getCeldas';
+      '?action=wgn';
     loadJSON(url, callbackJson);
   } else {
     //var listado=select('#lista');
@@ -95,14 +109,16 @@ function poblarLista(){
   }
   //actualizarLista++;
 }
-function cargarMas(){
+function cargarMasClick(){
   lineasNoticiasTotales=lineasNoticiasTotales+incrementoNoticias;
   //resetLista();
-  callbackJson(noticias);
+  callbackJson();
 }
 var arrayNoticias;
 function callbackJson(datos){
   if(datos){
+    datos=datos.reverse();
+    datos.pop(); //borro el encabezado
     noticias=datos;
   } else {
     datos=noticias;
@@ -118,14 +134,8 @@ function callbackJson(datos){
   var cantidadLineas=0;
   var mostrarBotonCargarMas=false;
   for (elemento in datos) {
-    //console.log(i+'-'+datos[elemento]);
     var linea=datos[elemento];
-    //for(campo in linea){
-    //  console.log(i+'-'+j+'-'+linea[campo]);
-    //  j++;
-    //}
 
-    //console.log(i+'-'+datos[elemento][0]+'|'+datos[elemento][1]);
     arrayNoticias[elemento][0]=formatFecha(datos[elemento][0]);
     arrayNoticias[elemento][1]=datos[elemento][1];
     arrayNoticias[elemento][2]=datos[elemento][2];
@@ -154,6 +164,40 @@ function callbackJson(datos){
   }
 
 }
+function resetLista(){
+  var items = document.getElementById("lista").childElementCount;
+  var lista=document.getElementById("lista");
+  for(var i=items;i>0;i--){
+    lista.removeChild(lista.childNodes[i]);
+  }
+}
+function cargarLista(lineas, array) {
+  resetLista();
+  var lista=document.getElementById("lista");
+  lista.className += " w3-ul ";
+  for(var i = 0; i <lineas; i++) {
+    if(array[i][0]!="-"){
+      // Create the list item:
+      var item = document.createElement('li');
+      // Set its contents:
+      var spanFecha = document.createElement("SPAN");
+      //span1.className+= ' rb';
+      var textoFecha=document.createTextNode(array[i][0]+' ');
+      spanFecha.appendChild(textoFecha);
+      item.appendChild(spanFecha);
+
+      var spanTitulo =  document.createElement("SPAN");
+      spanTitulo.className+= ' rb';
+      var textoTitulo=document.createTextNode(array[i][1]);
+      spanTitulo.appendChild(textoTitulo);
+      item.appendChild(spanTitulo);
+      item.appendChild(document.createElement("BR"));
+      item.appendChild(document.createTextNode(array[i][2]));
+      // Add it to the list:
+      lista.appendChild(item);
+    }
+  }
+}
 function formatFecha(fecha){
   var d = new Date(fecha)
   var dd = d.getDate()
@@ -180,86 +224,6 @@ function matrix( rows, cols, defaultValue){
   return arr;
 }
 
-function resetLista(){
-  var items = document.getElementById("lista").childElementCount;
-  var lista=document.getElementById("lista");
-  for(var i=items;i>0;i--){
-    lista.removeChild(lista.childNodes[i]);
-  }
-}
-function cargarLista(lineas, array) {
-  resetLista();
-    // Create the list element:
-    //var lista = document.createElement('ul');
-    //lista.class('w3-ul');
-    //lista.className += " w3-ul w3-center";
-    var lista=document.getElementById("lista");
-    lista.className += " w3-ul ";
-    console.log('lineas:'+lineas);
-    for(var i = lineas; i >0; i--) {
-      if(array[i][0]!="-"){
-        console.log('array['+i+']:'+array[i][0]);
-        // Create the list item:
-        var item = document.createElement('li');
-        // Set its contents:
-        var spanFecha = document.createElement("SPAN");
-        //span1.className+= ' rb';
-        var textoFecha=document.createTextNode(array[i][0]+' ');
-        spanFecha.appendChild(textoFecha);
-        item.appendChild(spanFecha);
-
-        var spanTitulo =  document.createElement("SPAN");
-        spanTitulo.className+= ' rb';
-        var textoTitulo=document.createTextNode(array[i][1]);
-        spanTitulo.appendChild(textoTitulo);
-        item.appendChild(spanTitulo);
-        item.appendChild(document.createElement("BR"));
-        item.appendChild(document.createTextNode(array[i][2]));
-        // Add it to the list:
-        lista.appendChild(item);
-      }
-    }
-
-   // Finally, return the constructed list:
-    //return lista;
-}
-
-function makeUL(array) {
-    // Create the list element:
-    //var lista = document.createElement('ul');
-    //lista.class('w3-ul');
-    //lista.className += " w3-ul w3-center";
-    var lista=document.getElementById("lista");
-    lista.className += " w3-ul ";
-    for(var i = 0; i < array.length; i++) {
-        // Create the list item:
-        var item = document.createElement('li');
-        // Set its contents:
-        /*
-        var spanFecha = document.createElement("SPAN");
-        //span1.className+= ' rb';
-        var textoFecha=document.createTextNode('FECHA-');
-        spanFecha.appendChild(textoFecha);
-        item.appendChild(spanFecha);
-
-        var spanTitulo =  document.createElement("SPAN");
-        spanTitulo.className+= ' rb';
-        var textoTitulo=document.createTextNode(array[i]);
-        spanTitulo.appendChild(textoTitulo);
-        item.appendChild(spanTitulo);
-        item.appendChild(document.createElement("BR"));
-        */
-        item.appendChild(document.createTextNode(array[i]));
-
-
-        // Add it to the list:
-        lista.appendChild(item);
-    }
-   // Finally, return the constructed list:
-    return lista;
-}
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function draw() {
   //background(62, 97, 173);
@@ -282,39 +246,6 @@ function windowResized() {
   */
 }
 
-function testDomW3(){
-  //slide.style('width', '50%');
-  for(var i=0;i< slide.length; i++){
-    //slide[i].style('width', '90%');
-    //slide[i].style('src','img/im4.jpg');
-    //slide[i].src('img/im4.jpg');
-    //var temp=slide[i].attribute('src');
-    //console.log('imagen:'+temp);
-    var n=4+i;
-    //slide[i].attribute('src','img/im'+n+'.jpg');
-  }
-  //navBar.style('background-color','#ff0000');
-  //var att=navBar.style('background-color');
-  var att=navBar.style('height');
-  console.log('att:'+att);
-  console.log('alto barra' + logoBarra.height);
-
-}
-function greet() {
-  miRequest();
-  var name = input.value();
-
-  //input.value('');
-
-  for (var i=0; i<200; i++) {
-    push();
-    fill(random(255), 255, 255);
-    translate(random(width), random(height));
-    rotate(random(2*PI));
-    text(name, 0, 0);
-    pop();
-  }
-}
 function miRequest() {
   var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?action=getUrlCount&url=3624280746';
   var url2='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec';
@@ -336,9 +267,3 @@ function finished(response) {
   console.log(response);
   greeting.html('hello '+response+'!');
 }
-
-// function cbRequest(data ) {
-//   console.log('Data:'+String(data));
-//   //greeting.html('hello '+String(data)+'!');
-//   greeting.html('hello '+'hola'+'!');
-// }

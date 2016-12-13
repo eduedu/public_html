@@ -7,6 +7,9 @@ body, html {
     height: 100%;
     line-height: 1.8;
 }
+/*sobreescribi el quarter de w3 para que siga siendo 25% aun en baja resolucion*/
+.w3-quarter{width:24.99999%}
+
 a.anchor {
     display: block;
     position: relative;

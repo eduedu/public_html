@@ -5,6 +5,9 @@ var navBar;
 var barraMenuOpciones;
 var logoBarra;
 var loaderNoticias;
+var lineasNoticiasTotales=2;
+var incrementoNoticias=1;
+var noticias;
 
 var btnCargarMas;
 var actualizarLista=0;
@@ -33,13 +36,14 @@ function setup() {
   loaderNoticias=select('#loaderNoticias');
   loaderNoticias.hide();
   btnCargarMas=select('#btnCargarMas');
+  btnCargarMas.mousePressed(cargarMas);
   btnCargarMas.hide();
 
   slide=selectAll('.mySlides')
   navBar=select('#myNavbar')
   barraMenuOpciones=select('#barraMenuOpciones')
   logoBarra=select('#logoBarra');
-
+  logoBarra.mousePressed(testGet);
   //btnCargarMas.mousePressed(poblarLista);
   poblarLista();
   //windowResized();
@@ -53,10 +57,28 @@ var options = [
 //var cars = ["Saab", "Volvo", "BMW"];
 var cars = ["Cargando noticas..."];
 
+function testGet() {
+  var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?action=wgu&a=3794439000';
+  //var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec?action=getCeldas';
+  loadJSON(url, cbTest, errCb);
+
+}
+function cbTest(datos){
+  //console.log('rta:' + datos);
+  //console.log('nombre:' + datos.nom);
+  //console.log('num:' + datos.num);
+  for(item in datos){
+    //console.log(datos[item].key+'-'+datos[item].value);
+    console.log(item +'-'+datos[item]);
+  }
+}
+function errCb(err){
+  console.log('Error:');
+  console.log(err);
+}
 
 function poblarLista(){
   //json url
-
   // Add the contents of options[0] to #foo:
   if(actualizarLista==0){
     loaderNoticias.show();
@@ -73,9 +95,18 @@ function poblarLista(){
   }
   //actualizarLista++;
 }
-
+function cargarMas(){
+  lineasNoticiasTotales=lineasNoticiasTotales+incrementoNoticias;
+  //resetLista();
+  callbackJson(noticias);
+}
 var arrayNoticias;
 function callbackJson(datos){
+  if(datos){
+    noticias=datos;
+  } else {
+    datos=noticias;
+  }
   //console.log(datos);
   var lineas=datos.length;
   var i=0;
@@ -84,6 +115,8 @@ function callbackJson(datos){
   arrayNoticias=null;
   arrayNoticias=matrix(lineas+1,3,'-');
   //console.log('total:'+lineas);
+  var cantidadLineas=0;
+  var mostrarBotonCargarMas=false;
   for (elemento in datos) {
     //console.log(i+'-'+datos[elemento]);
     var linea=datos[elemento];
@@ -98,11 +131,28 @@ function callbackJson(datos){
     arrayNoticias[elemento][2]=datos[elemento][2];
     i++;
     //break;
+    //SALR DEL BUCLE SI SE LLEGO AL MAXIMO DE LINEAS Q SE QUIERE MOSTRAR
+    cantidadLineas=i;
+    //console.log(i+'-'+lineasNoticiasTotales+'-'+cantidadLineas);
+
+    if(i>=lineasNoticiasTotales){
+      mostrarBotonCargarMas=true;
+      if(i>=(datos.length)){
+        mostrarBotonCargarMas=false;
+      }
+      break;
+    }
+
   }
   resetLista();
-  cargarLista(lineas, arrayNoticias);
+  cargarLista(cantidadLineas, arrayNoticias);
   loaderNoticias.hide();
-  btnCargarMas.show();
+  if(mostrarBotonCargarMas){
+    btnCargarMas.show();
+  } else {
+    btnCargarMas.hide();
+  }
+
 }
 function formatFecha(fecha){
   var d = new Date(fecha)
@@ -138,15 +188,17 @@ function resetLista(){
   }
 }
 function cargarLista(lineas, array) {
+  resetLista();
     // Create the list element:
     //var lista = document.createElement('ul');
     //lista.class('w3-ul');
     //lista.className += " w3-ul w3-center";
     var lista=document.getElementById("lista");
     lista.className += " w3-ul ";
-
+    console.log('lineas:'+lineas);
     for(var i = lineas; i >0; i--) {
       if(array[i][0]!="-"){
+        console.log('array['+i+']:'+array[i][0]);
         // Create the list item:
         var item = document.createElement('li');
         // Set its contents:

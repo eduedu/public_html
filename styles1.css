@@ -82,8 +82,10 @@ font-weight: bold;
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
-    from {background-color: #f05059;}
-    to {background-color: #3e61ad;}
+  0% {border-bottom:5px solid #3e61ad;}
+  5% {border-bottom:5px solid #f05059;}
+  85% {border-bottom:5px solid #f05059;}
+  100% {border-bottom:5px solid #3e61ad;}
 }
 
 /* Standard syntax */
@@ -118,7 +120,7 @@ font-weight: bold;
 }
 .flecha {
   /*font-size: 50px;*/
-  text-shadow: 1px 1px 4px #000000;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 /*---------------------------------------------------------------------------------------------*/

@@ -6,7 +6,8 @@
 <script language="javascript" src="libraries/p5.dom.js"></script>
 <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
 <script language="javascript" type="text/javascript" src="libraries/sketch.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="extras/w3.css">
 <link rel="stylesheet" href="extras/tema.css">
 <link rel="stylesheet" href="styles1.css">
@@ -25,18 +26,20 @@
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- Navbar +  -->
+<a class="anchor" id="aTop"></a>
 <div class="w3-top">
   <ul class="w3-navbar w3-card-2 w3-theme" id="myNavbar">
     <li>
       <!--<a href="#home" class="w3-wide">MiAuto Plan</a>-->
-      <a href="#home" style='padding:0px;margin-left:20px' class="w3-display-left"
-        onclick="activarMenu(0)" id="logoBarra" >
+      <a  style='padding:0px;margin-left:20px' class="w3-display-left"
+        onclick="" id="logoBarra" >
         <img src="img/logo256.png"  height="55px" width="55px">
       </a>
     </li>
     <!-- Right-sided navbar links -->
     <li class="w3-right w3-hide-small" id="barraMenuOpciones">
-      <a class='menu1 ' onclick="activarMenu(0)"><i class="fa fa-user"></i> Ingresar</a>
+      <a class='menu1 ' onclick="activarMenu(0);document.getElementById('id01').style.display='block'">
+        <i class="fa fa-user"></i> Ingresar</a>
       <a class='menu1 ' onclick="activarMenu(1);goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
       <a class='menu1 ' onclick="activarMenu(2);goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
       <a class='menu1' onclick="activarMenu(3)"><i class="fa fa-car"></i> NOSOTROS</a>
@@ -96,15 +99,47 @@ function goTo(anchor){
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 <!-- ///////////////////////// CATALOGO /////////////////////////////////////// -->
+<style>
+.landscape{
+/*
+    height: 200px;
+    width: auto;
+    overflow: hidden;
+    */
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+/*
+.portrait-crop img{
+    width: 100%;
+    height: 150%;
+
+}
+*/
+.portrait {
+  width: : 135%;
+  height: auto;
+  overflow: hidden;
+}
+
+</style>
 <div class="col-gris1 w3-display-container" style="" align="center">
 <!--<div class="w3-content w3-display-container" style="max-width:800px">-->
 <!--<div class="col-gris1  w3-row w3-display-container" style="max-width:800px;padding-top:40px;padding-bottom:0px"-->
-<div class="col-gris1  w3-row w3-display-container" style="padding-top:40px;padding-bottom:0px"
-  onmouseover="mOver()" onmouseout="mOut()">
+<div class="col-gris1  " style="padding-top:40px;padding-bottom:0px;overflow:hidden"
+  onmouseover="mOver()" onmouseout="mOut()" >
   <!--<iframe class='mySlides w3-animate-opacity'  style="width:100%;height:auto" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe>-->
-  <img class="mySlides w3-animate-opacity" src="img/imwide1.jpg" style="width:100%">
-  <img class="mySlides w3-animate-opacity" src="img/imwide2.jpg" style="width:100%">
-  <img class="mySlides w3-animate-opacity" src="img/imwide3.jpg" style="width:100%">
+  <div class=' w3-hide-small '>
+    <img class="mySlides w3-animate-opacity landscape" src="img/imwide1.jpg" >
+    <img class="mySlides w3-animate-opacity landscape" src="img/imwide2.jpg" >
+    <img class="mySlides w3-animate-opacity landscape" src="img/imwide3.jpg" >
+  </div>
+  <div class=' w3-hide-large w3-hide-medium'>
+    <img class="mySlides2 w3-animate-opacity portrait" src="img/imwide1.jpg" >
+    <img class="mySlides2 w3-animate-opacity portrait" src="img/imwide2.jpg" >
+    <img class="mySlides2 w3-animate-opacity portrait " src="img/imwide3.jpg" >
+  </div>
   <!--TEXTO sobre las imagenes
   <div class="w3-display-topright  w3-text-white "
     style='margin-top:45px' align='right'>
@@ -135,6 +170,8 @@ function goTo(anchor){
 
 var flechaIz=document.getElementById('flechaIz');
 var flechaDe=document.getElementById('flechaDe');
+flechaIz.style.display = "none";
+flechaDe.style.display = "none";
 function mOver() {
     flechaIz.style.display = "block";
     flechaDe.style.display = "block";
@@ -161,16 +198,19 @@ function currentDiv(n) {
 function showDivs(n) {
   var i;
   var x = document.getElementsByClassName("mySlides");
+  var y = document.getElementsByClassName("mySlides2");
   var dots = document.getElementsByClassName("demo");
   if (n > x.length) {slideIndex = 1}
   if (n < 1) {slideIndex = x.length}
   for (i = 0; i < x.length; i++) {
      x[i].style.display = "none";
+     y[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
      dots[i].className = dots[i].className.replace(" w3-theme-l4", "");
   }
   x[slideIndex-1].style.display = "block";
+  y[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " w3-theme-l4";
 }
 </script>
@@ -240,7 +280,7 @@ function showDivs(n) {
     <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">CONTACTO</span></h5>
   <!--<h3 class="w3-center">INFORMACIÓN DE CONTACTO</h3>-->
   <p class="w3-center w3-large">Ingrese sus datos y nos comunicaremos con usted a la brevedad. </p>
-  <div class="w3-row-padding" style="margin-top:20px">
+  <div class="w3-row-padding" style="margin-top:0px">
     <div class="w3-half w3-left" align='left'>
       <!--<form action="form.asp" target="_blank"> -->
         <p><input class="w3-input w3-border" type="text" placeholder="Nombre" required name="Nombre"></p>
@@ -267,7 +307,7 @@ function showDivs(n) {
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64">
-  <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <a class="w3-btn w3-padding w3-light-grey w3-hover-grey" onclick="goTo('aTop')"><i class="fa fa-arrow-up w3-margin-right"></i>Subir</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
     <i class="fa fa-flickr w3-hover-text-red"></i>
@@ -275,44 +315,53 @@ function showDivs(n) {
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
     <i class="fa fa-linkedin w3-hover-text-indigo"></i>
   </div>
-
 </footer>
+<!--///////////////////////////////////////////////////////////////////////////////////-->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn col-hover-salmon w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
+        <img src="img/logo1.png"  style="width:30%" class="">
+      </div>
+      <form class="w3-container" action="form.asp">
+        <div class="w3-section">
+          <!--<label><b>Numero de teléfono</b></label>-->
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Número de teléfono" name="username" required>
+          <!--<label><b>Contraseña</b></label>-->
+          <input class="w3-input w3-border" type="password" placeholder="Contraseña" name="psw" required>
+          <button class="w3-btn-block col-azul w3-section w3-padding" type="submit">Ingresar</button>
+          <!--<input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me-->
+        </div>
+      </form>
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
+        <span class="w3-right w3-padding w3-hide-small">¿Olvidó la <a href="#">contraseña?</a></span>
+      </div>
+    </div>
+  </div>
 
-<!-- Add Google Maps -->
+<!-- ////////////////////////////////////////////////Add Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
-
 <script>
 <!-- Google Map Location -->
 var myCenter = new google.maps.LatLng(-27.4654675,-58.8359838);
 //var myCenter = new google.maps.geo
-
 function initialize() {
-var mapProp = {
-  center: myCenter,
-  zoom: 16,
-  scrollwheel: true,
-  draggable: true,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-var marker = new google.maps.Marker({
-  position: myCenter,
-});
-
-marker.setMap(map);
+  var mapProp = {
+    center: myCenter,
+    zoom: 16,
+    scrollwheel: true,
+    draggable: true,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
 
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
 
 
 // Toggle between showing and hiding the sidenav when clicking the menu icon

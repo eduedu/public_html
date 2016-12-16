@@ -41,15 +41,16 @@ function setup() {
   //ingresarClick();
 }
 
+
 function ingresarClick(){
   loaderNoticias.show();
   //var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec?action=getCeldas';
   var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?'
   +'action=wgu&a=3794950807';
 
-  loadJSON(url, cbTest, errCb);
+  loadJSON(url, callbackIngresar, errIngresar);
 
-  function cbTest(datos){
+  function callbackIngresar(datos){
     //console.log('rta:' + datos);
     //console.log('nombre:' + datos.nom);
     //console.log('num:' + datos.num);
@@ -83,7 +84,7 @@ function ingresarClick(){
       return s;
     }
   }
-  function errCb(err){
+  function errIngresar(err){
     console.log('Error:');
     console.log(err);
     document.getElementById('id01').style.display='none';

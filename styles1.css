@@ -1,12 +1,15 @@
 #p2 {background-color: rgba(0, 255, 0, 0.3);}
 /*body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}*/
 
-body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto"}
+body,h1,h2,h3,h4,h5,h6,p {font-family: "Roboto"; color: #4d4d4d;}
 /*body,h1,h2,h3,h4,h5,h6 {font-family: "Shadows Into Light"}*/
 body, html {
     height: 100%;
     line-height: 1.8;
 }
+/*sobreescribi el quarter de w3 para que siga siendo 25% aun en baja resolucion*/
+.w3-quarter{width:24.99999%}
+
 a.anchor {
     display: block;
     position: relative;
@@ -64,7 +67,7 @@ font-weight: bold;
     /*background-color: rgba(255, 255, 0, 0.0);*/
     /*background-color: #dedddd;*/
     background-color: #3e61ad;
-
+    cursor:pointer;
 }
 .active {
   /*background-color: #000;*/
@@ -104,7 +107,8 @@ font-weight: bold;
   background-size: cover;
   min-height: 100%;
 }
-.w3-left, .w3-right, .w3-badge {cursor:pointer}
+/*.w3-left, .w3-right, */
+.w3-badge {cursor:pointer}
 .w3-badge {height:14px;width:14px;padding:0px;
    margin-left:7px; margin-right: 7px; margin-bottom: 0px}
 /*-------side*/
@@ -122,5 +126,25 @@ font-weight: bold;
   /*font-size: 50px;*/
   text-shadow: 1px 1px 2px #000000;
 }
-
+.landscape{
+/*
+    height: 200px;
+    width: auto;
+    overflow: hidden;
+    */
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+/*
+.portrait-crop img{
+    width: 100%;
+    height: 150%;
+}
+*/
+.portrait {
+  width: : 135%;
+  height: auto;
+  overflow: hidden;
+}
 /*---------------------------------------------------------------------------------------------*/

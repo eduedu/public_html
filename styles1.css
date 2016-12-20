@@ -9,6 +9,17 @@ body, html {
 }
 /*sobreescribi el quarter de w3 para que siga siendo 25% aun en baja resolucion*/
 .w3-quarter{width:24.99999%}
+.w3-half.dos{width:49.99999%}
+
+.bordeAmarillo {
+  /*border-bottom:5px solid #f05059;*/
+  border-top:2px solid #faa41b;
+  border-bottom:2px solid #faa41b;
+  /*-webkit-animation-name: example;
+  -webkit-animation-duration: 4s;
+  animation-name: example;
+  animation-duration: 3s;*/
+}
 
 a.anchor {
     display: block;

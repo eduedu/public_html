@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <title>MiAuto Plan - Sitio Oficial</title>
-<script language="javascript" type="text/javascript" src="lib/p5.min.js"></script>
+<script language="javascript" type="text/javascript" src="lib/p5.js"></script>
 <!-- uncomment lines below to include extra p5 libraries -->
-<script language="javascript" src="lib/p5.dom.min.js"></script>
+<script language="javascript" src="lib/p5.dom.js"></script>
 <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
 <script language="javascript" type="text/javascript" src="p.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
@@ -37,12 +37,12 @@
     <li class="w3-right w3-hide-small" id="barraMenuOpciones">
       <a id='menuIngresar' class='menu1 ' onclick="activarMenu(0);document.getElementById('id01').style.display='block'">
         <i class="fa fa-user"></i> Ingresar</a>
-      <a id='menuMiCuenta' class='menu1 ' onclick="activarMenu(1);goTo('aMiCuenta')"
+      <a id='menuMiCuenta' class='menu1 rb' onclick="activarMenu(1);goTo('aMiCuenta')"
          style='display:none'><i class="fa fa-user"></i> MI CUENTA</a>
       <a class='menu1 ' onclick="activarMenu(2);goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
       <a class='menu1 ' onclick="activarMenu(3);goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
-      <a class='menu1' onclick="activarMenu(4)"><i class="fa fa-car"></i> NOSOTROS</a>
-      <a class='menu1 ' onclick="activarMenu(5)">  <i class="fa fa-th"></i> CATÁLOGO</a>
+      <a class='menu1' onclick="activarMenu(4);goTo('aNosotros')"><i class="fa fa-car"></i> NOSOTROS</a>
+      <a class='menu1' onclick="activarMenu(5);goTo('aCatalogo')">  <i class="fa fa-th"></i> CATÁLOGO</a>
       <!--<a href="#aNoticias" class='menu1 ' onclick="activarMenu(5)"><i class="fa fa-home"></i> INICIO</a>-->
       <a class='menu1 ' onclick="activarMenu(6);goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a>
     </li>
@@ -131,50 +131,6 @@
 </div>
 </div>
 
-
-<!-- ///////////////////////// MI CUENTA /////////////////////////////////////// -->
-<a class="anchor" id="aMiCuenta"></a>
-<div class="w3-container w3-display-container " align='center'  id="miCuenta" style='display:none' style="max-width:800px">
-  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">MI CUENTA</span></h5>
-  <div class="w3-row-padding w3-center" style="margin-top:0px;max-width:800px">
-    <div class="w3-half"> <!-- IMAGENES -->
-      <div  class="w3-greyscale-min" >
-        <img id="url0" src='img/logo1.png' style="width:100%;height:100%;margin:auto"
-        onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'">
-      </div>
-      <div class='w3-quarter'><img id='url1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('url0').src=this.src"></div>
-      <div class='w3-quarter'><img id='url2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('url0').src=this.src"></div>
-      <div class='w3-quarter'><img id='url3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('url0').src=this.src"></div>
-      <div class='w3-quarter'><img id='url4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('url0').src=this.src"></div>
-
-    </div>
-    <div id='miCuentaDatos' class="w3-half w3-left" align='left'>
-      <!--
-        <p><input class="w3-input w3-border" type="text" placeholder="Nombre" required name="Nombre"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Número de Teléfono" required name="Numero"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" required name="Mensaje"></p>
-        <p>
-          <button class="w3-btn w3-padding w3-right col-azul" type="submit" align='right'>
-            <i class="fa fa-paper-plane"></i>  ENVIAR
-          </button>
-        </p>
-        <br>
-        <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> C. Pellegrini 1140, Corrientes</p>
-        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> (0379) 44.....</p>
-        <p><i class="fa fa-mobile-phone fa-fw w3-xxlarge w3-margin-right"></i> 379 (15) 4......</p>
-        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> contacto@miautoplan.com</p>
-      -->
-    </div>
-  </div>
-</div>
-<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
-  <span class="w3-closebtn w3-text-white col-hover-salmon w3-container w3-padding-16 w3-display-topright">&times;</span>
-  <div class="w3-modal-content w3-animate-zoom">
-    <img id='modalImg' src="" style="width:100%">
-  </div>
-</div>
-
-
 <!-- ///////////////////////// INICIO-NOTICIAS /////////////////////////////////////// -->
 <a class="anchor" id="aNoticias"></a>
 <div class="w3-container w3-display-container " align='center' id="noticias" >
@@ -192,10 +148,58 @@
   </div>
 </div>
 
+<!-- ///////////////////////// MI CUENTA /////////////////////////////////////// -->
+<a class="anchor" id="aMiCuenta"></a>
+<div class="w3-container w3-display-container col-gris4 " align='center'  id="miCuenta" style='display:none;padding-bottom:40px' style="max-width:800px">
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">MI CUENTA</span></h5>
+  <div class="w3-center " style="margin-top:0px;max-width:800px">
+    <div class="w3-half"> <!-- IMAGENES -->
+      <div  >
+        <img id="url0" src='img/logo1.png' style="width:100%;height:100%;margin:auto"
+        onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'">
+      </div>
+      <div class='w3-quarter'><img id='url1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter'><img id='url2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter'><img id='url3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter'><img id='url4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('url0').src=this.src"></div>
+
+    </div>
+    <div id='miCuentaDatos' class="w3-half w3-left w3-row-padding" align='left'>
+    </div>
+  </div>
+</div>
+<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+  <span class="w3-closebtn w3-text-white col-hover-salmon w3-container w3-padding-16 w3-display-topright">&times;</span>
+  <div class="w3-modal-content w3-animate-zoom">
+    <img id='modalImg' src="" style="width:100%">
+  </div>
+</div>
+
+
+
+<!-- ///////////////////////// CATALOGO /////////////////////////////////////// -->
+<a class="anchor" id="aCatalogo"></a>
+<div class="w3-container w3-display-container " align='center' id="catalogo" >
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">CATÁLOGO</span></h5>
+  <div class="w3-container w3-section  ">
+
+  </div>
+</div>
+
+
+<!-- ///////////////////////// NOSOTROS /////////////////////////////////////// -->
+<a class="anchor" id="aNosotros"></a>
+<div class="w3-container w3-display-container col-gris4 " align='center' id="nosotros" >
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">NOSOTROS</span></h5>
+  <div class="w3-container w3-section  ">
+
+  </div>
+</div>
+
 
 <!-- ///////////////////////// FAQ /////////////////////////////////////// -->
 <a class="anchor" id="aFaq"></a>
-<div class="w3-container w3-display-container col-gris4" align='center' id="faq" >
+<div class="w3-container w3-display-container " align='center' id="faq" >
   <h5 class="w3-center w3-container col-azul " style="max-width:800px">
     <span  class=" w3-padding-8 col-azul w3-tag w3-wide "> FAQ <BR> Preguntas Frecuentas</span></h5>
     <div class="w3-container w3-section  ">

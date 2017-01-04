@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 <title>MiAuto Plan - Sitio Oficial</title>
-<script language="javascript" type="text/javascript" src="lib/p5.js"></script>
+<script language="javascript" type="text/javascript" src="lib/p5.min.js"></script>
 <!-- uncomment lines below to include extra p5 libraries -->
-<script language="javascript" src="lib/p5.dom.js"></script>
+<script language="javascript" src="lib/p5.dom.min.js"></script>
 <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
+<!--
+<script language="javascript" type="text/javascript" src="p.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
+<script language="javascript" type="text/javascript" src="fun.min.js"></script>
+<script language="javascript" type="text/javascript" src="funcat.min.js"></script>
+<script language="javascript" type="text/javascript" src="funing.min.js"></script>
+-->
 <script language="javascript" type="text/javascript" src="p.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
 <script language="javascript" type="text/javascript" src="fun.js"></script>
+<script language="javascript" type="text/javascript" src="funcat.js"></script>
+<script language="javascript" type="text/javascript" src="funing.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="lib2/w3.css">
@@ -35,7 +45,7 @@
     </li>
     <!-- Right-sided navbar links -->
     <li class="w3-right w3-hide-small" id="barraMenuOpciones">
-      <a id='menuIngresar' class='menu1 ' onclick="activarMenu(0);document.getElementById('id01').style.display='block'">
+      <a id='menuIngresar' class='menu1 ' onclick="activarMenu(0);document.getElementById('txtResponse').style.display='none';document.getElementById('id01').style.display='block'">
         <i class="fa fa-user"></i> Ingresar</a>
       <a id='menuMiCuenta' class='menu1 rb' onclick="activarMenu(1);goTo('aMiCuenta')"
          style='display:none'><i class="fa fa-user"></i> MI CUENTA</a>
@@ -56,15 +66,18 @@
 </div>
 
 <!-- SIDEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
-<nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-left w3-hide-medium w3-hide-large"
-  style="display:none" id="mySidenav">
+<nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-right w3-hide-medium w3-hide-large"
+  style="display:none;width:200px;right:0;" id="mySidenav">
   <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">x Cerrar</a>-->
   <a onclick="w3_close();goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a>
-  <a onclick="w3_close()"><i class="fa fa-th"></i> CATÁLOGO</a>
-  <a onclick="w3_close()"><i class="fa fa-car"></i> NOSOTROS</a>
+  <a onclick="w3_close();goTo('aCatalogo')"><i class="fa fa-th"></i> CATÁLOGO</a>
+  <a onclick="w3_close();goTo('aNosotros')"><i class="fa fa-car"></i> NOSOTROS</a>
   <a onclick="w3_close();goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
   <a onclick="w3_close();goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
-  <a style="padding-top:20px" onclick="w3_close()"><i class="fa fa-user"></i> Ingresar</a>
+  <a id='sideMiCuenta' style="padding-top:20px;display:none" onclick="w3_close();goTo('aMiCuenta')">
+    <i class="fa fa-user"></i> MI CUENTA</a>
+  <a id='sideIngresar' style="padding-top:20px" onclick="w3_close();document.getElementById('txtResponse').style.display='none';document.getElementById('id01').style.display='block'">
+    <i class="fa fa-user"></i> Ingresar</a>
 </nav>
 <script> sideNavFun()</script>
 
@@ -158,10 +171,10 @@
         <img id="url0" src='img/logo1.png' style="width:100%;height:100%;margin:auto"
         onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'">
       </div>
-      <div class='w3-quarter'><img id='url1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('url0').src=this.src"></div>
-      <div class='w3-quarter'><img id='url2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('url0').src=this.src"></div>
-      <div class='w3-quarter'><img id='url3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('url0').src=this.src"></div>
-      <div class='w3-quarter'><img id='url4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('url0').src=this.src"></div>
 
     </div>
     <div id='miCuentaDatos' class="w3-half w3-left w3-row-padding" align='left'>
@@ -182,7 +195,12 @@
 <div class="w3-container w3-display-container " align='center' id="catalogo" >
   <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">CATÁLOGO</span></h5>
   <div class="w3-container w3-section  ">
-
+    <div id='loaderCatalogo'>
+      <p> Cargando... </p>
+      <img  src="img/loader.gif" class="w3-round  " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
+    </div>
+    <div id='divAutos'  class="" align='left'>
+    </div>
   </div>
 </div>
 
@@ -192,7 +210,9 @@
 <div class="w3-container w3-display-container col-gris4 " align='center' id="nosotros" >
   <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">NOSOTROS</span></h5>
   <div class="w3-container w3-section  ">
-
+    <div id="" class=' w3-left-align w3-text-black '  style="max-width:800px;padding:0px" >
+      <h6 class='rn'> Morbi fringilla erat a ex facilisis, non maximus velit euismod. Duis molestie ligula vestibulum lectus scelerisque, ac sagittis tellus sagittis. Mauris vel massa eget libero semper imperdiet rutrum sed ligula. Pellentesque imperdiet nibh ac neque euismod, eu pulvinar ligula varius.
+  </div>
   </div>
 </div>
 
@@ -201,7 +221,7 @@
 <a class="anchor" id="aFaq"></a>
 <div class="w3-container w3-display-container " align='center' id="faq" >
   <h5 class="w3-center w3-container col-azul " style="max-width:800px">
-    <span  class=" w3-padding-8 col-azul w3-tag w3-wide "> FAQ <BR> Preguntas Frecuentas</span></h5>
+    <span  class=" w3-padding-8 col-azul w3-tag w3-wide "> FAQ <BR> Preguntas Frecuentes</span></h5>
     <div class="w3-container w3-section  ">
       <div id="" class=' w3-left-align w3-text-black '  style="max-width:800px;padding:0px" >
         <h5 class='rb  '>¿Pregunta 1 como descargar la app?</h5>
@@ -253,6 +273,7 @@
         <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> (0379) 44.....</p>
         <p><i class="fa fa-mobile-phone fa-fw w3-xxlarge w3-margin-right"></i> 379 (15) 4......</p>
         <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> contacto@miautoplan.com</p>
+        <p><i class="fa fa-facebook fa-fw w3-xxlarge w3-margin-right"> </i> <a target="_blank" href='https://www.facebook.com/miautoplanoficial'>facebook.com/miautoplanoficial</a></p>
       <!--</form>-->
     </div>
     <div class="w3-half">
@@ -265,29 +286,119 @@
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64">
   <a class="w3-btn w3-padding w3-light-grey w3-hover-grey" onclick="goTo('aTop')"><i class="fa fa-arrow-up w3-margin-right"></i>Subir</a>
-  <div class="w3-xlarge w3-section">
+  <!-- <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
     <i class="fa fa-flickr w3-hover-text-red"></i>
     <i class="fa fa-instagram w3-hover-text-purple"></i>
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
     <i class="fa fa-linkedin w3-hover-text-indigo"></i>
   </div>
+-->
 </footer>
 <!--////////////////////////////////// LOGIN /////////////////////////////////////////////////-->
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  console.log('edu');
+  document.cookie = "username=John Doe";
+  var x = document.cookie;
+  console.log(x);
+  console.log('cookie edu:' + x);
+  console.log('edu2');
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '524916321042945',
+    cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.8
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
       <div class="w3-center"><br>
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn col-hover-salmon w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn col-hover-salmon w3-container w3-padding-8 w3-display-topright" title="Cerrar">&times;</span>
         <img src="img/logo1.png"  style="width:30%" class="">
       </div>
       <div class="w3-container" >
         <div class="w3-section">
           <!--<label><b>Numero de teléfono</b></label>-->
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Número de teléfono" >
+          <input id='cam1' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Número de teléfono" >
           <!--<label><b>Contraseña</b></label>-->
-          <input class="w3-input w3-border" type="password" placeholder="Contraseña"  >
+          <input id='cam2' class="w3-input w3-border" type="password" placeholder="Contraseña"  >
+          <h5 id='txtResponse' align='right' class="col-text-salmon"> Contraseña Incorrecta! </h5>
           <button id="btnIngresar" class="w3-btn-block col-azul w3-section w3-padding">Ingresar</button>
           <!--<input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me-->
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>
         </div>
       </div>
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
@@ -297,6 +408,24 @@
     </div>
   </div>
 
+  <!--////////////////////////////////// DETALLES /////////////////////////////////////////////////-->
+  <div id="det" class="w3-modal">
+      <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+        <div class="w3-center"><br>
+          <span onclick="document.getElementById('det').style.display='none'" class="w3-closebtn col-hover-salmon w3-container w3-padding-8 w3-display-topright" title="Cerrar">&times;</span>
+          <!--<img src="img/logo1.png"  style="width:30%" class="">-->
+          <div  >
+            <img id="durl0" src='img/logo1.png' style="width:100%;height:100%;margin:auto"
+            onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'">
+          </div>
+          <div class='w3-quarter dos'><img id='durl1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('durl0').src=this.src"></div>
+          <div class='w3-quarter dos'><img id='durl2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('durl0').src=this.src"></div>
+          <div class='w3-quarter dos'><img id='durl3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('durl0').src=this.src"></div>
+          <div class='w3-quarter dos'><img id='durl4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('durl0').src=this.src"></div>
+
+        </div>
+      </div>
+    </div>
 <!-- ////////////////////////////////////////////////Add Google Maps -->
 
 <script>

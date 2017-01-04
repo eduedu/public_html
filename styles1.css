@@ -8,8 +8,19 @@ body, html {
     line-height: 1.8;
 }
 /*sobreescribi el quarter de w3 para que siga siendo 25% aun en baja resolucion*/
-.w3-quarter{width:24.99999%}
+.w3-quarter.dos {width:24.99999%}
+.w3-quarter.tres {width:24.99999%}
+
+@media screen and (max-width: 480px) {
+  .w3-quarter.dos {width:49.99999%}
+  .w3-quarter.tres {width:49.99999%}
+}
+
 .w3-half.dos{width:49.99999%}
+
+.lineaCatalogo {
+  border-bottom:2px solid #dedddd;
+}
 
 .bordeAmarillo {
   /*border-bottom:5px solid #f05059;*/

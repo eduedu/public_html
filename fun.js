@@ -117,12 +117,13 @@ function sendForm(){
 
 /// ///////////////// MAPS  ////////////////////////////////////
 <!-- Google Map Location -->
+var myCenterCentral = new google.maps.LatLng(-34.6112817,-58.3662798);
 var myCenter = new google.maps.LatLng(-27.4654675,-58.8359838);
 //var myCenter = new google.maps.geo
 function initialize() {
   var mapProp = {
     center: myCenter,
-    zoom: 16,
+    zoom: 15,
     scrollwheel: true,
     draggable: true,
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -134,6 +135,22 @@ function initialize() {
   marker.setMap(map);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function initializeCentral() {
+  var mapProp = {
+    center: myCenterCentral,
+    zoom: 15,
+    scrollwheel: true,
+    draggable: true,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("googleMapCentral"),mapProp);
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+google.maps.event.addDomListener(window, 'load', initializeCentral);
 
 
 ///// SIDE NAV  /////////////////////////////////////////////

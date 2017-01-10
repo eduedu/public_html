@@ -1,13 +1,60 @@
 var cam1;
 var cam2;
+var btnConseguirMasLlaves;
+var btnSolicitarAsesor;
+var btnPedirMiAuto;
+var gdata;
+function ingresarFBCk(){
+  loaderProceso.show();
+  /*
+  ingresar(true);
+  var fbData=fbAuth();
+  console.log('fbData'+fbData);
+  */
+  //fbAuth();
+  FB.login(function(response) {
+    if (response.authResponse) {
+      //console.log('User fully authorize the app.');
+      //alert('User fully authorize the app.');
+      FB.api('/me', function(response) {
+        //console.log('Successful login for: ' + response.name);
+        //console.log('ID: ' + response.id);
+        //usuario=response.id;
+        ingresar(response.id);
+        //document.getElementById('status').innerHTML =
+        //  'Thanks for logging in, ' + response.name + '!';
+      });
+    } else {
+      loaderProceso.hide();
+      //console.log('User canceled login or did not fully authorize the app.');
+      //alert('User canceled login or did not fully authorize the app.');
+    }
+  }
+  );
+}
 function ingresarCk(){
-  loaderNoticias.show();
+  loaderProceso.show();
+  ingresar('0');
+}
+function ingresar(faceId){
+  //console.log('ingresar:'+ingresarConFB.toString());
+  //loaderNoticias.show();
+
   cam1=select('#cam1');
   cam2=select('#cam2');
+  var par1;
+  var par2;
+  if(faceId=='0') {
+    par1=cam1.value();
+    par2=cam2.value();
+  } else {
+    par1='fi';
+    par2=faceId;
+  }
   //var url = 'https://script.google.com/macros/s/AKfycbwPVattCBeKgzkAXXFzBaWpcCasoYzr769K9cUFXrBkNbwi8A-Y/exec?action=getCeldas';
   var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?'
   //+'action=wgu&a=3794950807';
-  +'action=wgu&a='+cam1.value()+'&b='+cam2.value();
+  +'action=wgu&a='+par1+'&b='+par2;
   //console.log(cam1.value()+'-'+cam2.value());
   //console.log(url);
   //console.log(cam1.value()+'-'+cam2.value());
@@ -20,8 +67,21 @@ function ingresarCk(){
       //alert(location.hostname);
       var txt=select('#txtResponse');
       txt.show();
+      loaderProceso.hide();
       return -1;
     }
+    if(datos==-2){
+      //console.log('error contraseña');
+      //alert(location.hostname);
+      var txt=select('#txtResponse2');
+      txt.show();
+      loaderProceso.hide();
+      return -1;
+    }
+
+    //se almacena datos en gdata (global)
+    gdata=datos;
+
     //console.log('nombre:' + datos.nom);
     //console.log('num:' + datos.num);
     /*for(item in datos){
@@ -37,6 +97,15 @@ function ingresarCk(){
     //miCuentaDatos.insertAdjacentHTML("beforeend",htmlRendered);
     var autosRendered=datos.autoRender;
     miCuentaDatos.insertAdjacentHTML("beforeend",autosRendered);
+
+    //funciones botones
+    btnConseguirMasLlaves= select('#btnConseguirMasLlaves');
+    btnConseguirMasLlaves.mousePressed(funConseguirMasLlaves);
+    btnSolicitarAsesor= select('#btnSolicitarAsesor');
+    btnSolicitarAsesor.mousePressed(funSolicitarAsesor);
+    btnPedirMiAuto= select('#btnPedirMiAuto');
+    btnPedirMiAuto.mousePressed(funPedirMiAuto);
+
     //console.log(datos.auto.url1);
     document.getElementById('url0').src=datos.auto.url1;
     document.getElementById('url1').src=datos.auto.url1;
@@ -52,19 +121,51 @@ function ingresarCk(){
     document.getElementById('aMiCuenta').scrollIntoView(true);
     //document.getElementById('aCatalogo').scrollIntoView(true);
     document.getElementById('id01').style.display='none';
+    loaderProceso.hide();
     //document.getElementById('ruedaCanvas').style.display='none';
 
     //dibujar canvas rueda
     //var llaves=parseInt(datos.llaves);
+    if(datos.llaves==""){
+      datos.llaves="0";
+    }
+    if(datos.intrans==""){
+      datos.intrans="0";
+    }
     var totalLlaves=parseInt(datos.llaves)+parseInt(datos.intrans);
+    //console.log(datos.llaves);
+    //console.log(datos.intrans);
+    //console.log(totalLlaves);
+    //console.log(parseInt(datos.llaves));
+    //console.log(parseInt(datos.intrans));
+
     var llavesAuto=parseInt(datos.auto.llaves);
     //var ruedaCanvas = document.getElementById("ruedaCanvas");
     //dibujarRueda(llaves,totalLlaves);
     dibujarRueda(totalLlaves,llavesAuto);
 
-    function dibujarRueda(llaves,total){
-      var angulo=llaves*(PI*2)/total;
+    /*------------------------------------------------------------------------------------------------*/
+    function funSolicitarAsesor(){
+      var nombre=gdata.nombre;
+      var tel=gdata.numero;
+      var msj='Solicito que un asesor se contacte conmigo.';
 
+      document.getElementById('fnombre').value=nombre;
+      document.getElementById('ftel').value=tel;
+      document.getElementById('fmsj').value=msj;
+      goTo('aContacto');
+
+    }
+    function funConseguirMasLlaves(){
+       document.getElementById('modalMasLlaves').style.display='block';
+    }
+    function funPedirMiAuto(){
+       document.getElementById('modalPedirMiAuto').style.display='block';
+    }
+    function dibujarRueda(llaves,total){
+      //console.log(llaves);
+      var angulo=llaves*((PI*2)/total);
+      //console.log(angulo);
       var w=100;
       var h=100;
       var wCanvas=w;
@@ -77,7 +178,9 @@ function ingresarCk(){
       //bufferCanvas.background(255);
       bufferCanvas.ellipse(w/2,h/2,w*0.89,h*0.89);
       bufferCanvas.stroke(227,169,62);
-      bufferCanvas.arc(w/2,h/2,w*0.89,h*0.89,0-HALF_PI,angulo-HALF_PI,OPEN);
+      if(angulo!=0){
+        bufferCanvas.arc(w/2,h/2,w*0.89,h*0.89,0-HALF_PI,angulo-HALF_PI,OPEN);
+      }
 
       //bufferCanvas.rectMode(CENTER);
       bufferCanvas.fill(77,77,77);

@@ -12,6 +12,7 @@ var noticias;
 var btnCargarMas;
 var actualizarLista=0;
 var btnIngresar;
+var btnIngresarFB;
 
 
 function setup() {
@@ -27,6 +28,8 @@ function setup() {
   loaderNoticias.hide();
   loaderCatalogo=select('#loaderCatalogo');
   loaderCatalogo.hide();
+  loaderProceso=select('#loaderProceso');
+  loaderProceso.hide();
 
   btnCargarMas=select('#btnCargarMas');
   btnCargarMas.mousePressed(cargarMasClick);
@@ -40,6 +43,9 @@ function setup() {
 
   btnIngresar=select('#btnIngresar');
   btnIngresar.mousePressed(ingresarCk);
+
+  btnIngresarFB=select('#btnIngresarFB');
+  btnIngresarFB.mousePressed(ingresarFBCk);
 
   //windowResized();
   listasGenerales();

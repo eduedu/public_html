@@ -10,6 +10,7 @@ function CargarCat(autos) {
       var temp={
         nombre:autos[modelo][1],
         precio:autos[modelo][2],
+        descripcion:autos[modelo][3],
         llaves:autos[modelo][9],
         url1:url1,
         url2:autos[modelo][5],
@@ -53,13 +54,18 @@ function CargarCat(autos) {
 }
 function detModal(index){
   var det=document.getElementById('det');
-  det.style.display='block';
+
+  document.getElementById('dautonombre').textContent =catalogoAutos[index].nombre;
+  document.getElementById('dautodescripcion').textContent =catalogoAutos[index].descripcion;
+  document.getElementById('dautollaves').textContent ="" +catalogoAutos[index].llaves;
+  document.getElementById('dautoprecio').textContent ="$ "+catalogoAutos[index].precio;
 
   document.getElementById('durl0').src=catalogoAutos[index].url1;
   document.getElementById('durl1').src=catalogoAutos[index].url1;
   document.getElementById('durl2').src=catalogoAutos[index].url2;
   document.getElementById('durl3').src=catalogoAutos[index].url3;
   document.getElementById('durl4').src=catalogoAutos[index].url4;
+  det.style.display='block';
 }
 function resetCat(listaAutos){
   //var items = document.getElementById("divAutos").childElementCount;

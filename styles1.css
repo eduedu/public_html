@@ -7,6 +7,12 @@ body, html {
     height: 100%;
     line-height: 1.8;
 }
+
+.trans {
+    /*background-color:transparent;*/
+    background-color:rgba(0,0,0,0.35);
+}
+
 /*sobreescribi el quarter de w3 para que siga siendo 25% aun en baja resolucion*/
 .w3-quarter.dos {width:24.99999%}
 .w3-quarter.tres {width:24.99999%}
@@ -31,7 +37,15 @@ body, html {
   animation-name: example;
   animation-duration: 3s;*/
 }
-
+.bordeAmarillo2 {
+  /*border-bottom:5px solid #f05059;*/
+  /*border-top:2px solid #faa41b;*/
+  border-bottom:2px solid #faa41b;
+  /*-webkit-animation-name: example;
+  -webkit-animation-duration: 4s;
+  animation-name: example;
+  animation-duration: 3s;*/
+}
 a.anchor {
     display: block;
     position: relative;
@@ -78,6 +92,7 @@ font-weight: bold;
   float: right;
     padding: 10px;
     font-size: 14px;
+    /*height:80px;*/
 }
 /*.w3-navbar li a:hover:not(.active) {*/
 .w3-navbar li a:hover {
@@ -86,9 +101,9 @@ font-weight: bold;
     /*color: #faa41b;*/
     /*color: rgba(255, 255, 0, 5.0);*/
     color:#fff;
-    /*background-color: rgba(255, 255, 0, 0.0);*/
+    background-color: rgba(0, 0, 0, 0.0);
     /*background-color: #dedddd;*/
-    background-color: #3e61ad;
+    /*background-color: #3e61ad;*/
     cursor:pointer;
 }
 .active {

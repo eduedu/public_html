@@ -1,1 +1,555 @@
-<!DOCTYPE html><html><title>MiAuto Plan - Sitio Oficial</title><script language="javascript" type="text/javascript" src="lib/p5.min.js"></script><script language="javascript" src="lib/p5.dom.min.js"></script><script language="javascript" type="text/javascript" src="p.min.js"></script><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script><script language="javascript" type="text/javascript" src="fun.min.js"></script><script language="javascript" type="text/javascript" src="funcat.min.js"></script><script language="javascript" type="text/javascript" src="funfb.js"></script><script language="javascript" type="text/javascript" src="funing.min.js"></script><!--<script language="javascript" type="text/javascript" src="p.js"></script><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script><script language="javascript" type="text/javascript" src="fun.js"></script><script language="javascript" type="text/javascript" src="funcat.js"></script><script language="javascript" type="text/javascript" src="funing.js"></script>--><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="lib2/w3.css"><link rel="stylesheet" href="lib2/tema.css"><link rel="stylesheet" href="styles1.css"><!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--><link rel="stylesheet" href="lib2/css/font-awesome.min.css"><link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"><body><a class="anchor" id="aTop"></a><div class="w3-top"> <ul class="w3-navbar w3-card-2 w3-theme " id="myNavbar"> <li> <a style='padding:0px;margin-left:20px' class="w3-display-left" onclick="" id="logoBarra" > <img src="img/logo256.png" height="55px" width="55px"> </a> </li><li class="w3-right w3-hide-small " id="barraMenuOpciones"> <a id='menuIngresar' class='menu1 ' onclick="activarMenu(0);document.getElementById('txtResponse2').style.display='none';document.getElementById('txtResponse').style.display='none';document.getElementById('id01').style.display='block'"> <i class="fa fa-user"></i> Ingresar</a> <a id='menuMiCuenta' class='menu1 rb' onclick="activarMenu(1);goTo('aMiCuenta')" style='display:none'><i class="fa fa-user"></i> MI CUENTA</a> <a class='menu1 ' onclick="activarMenu(2);goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a> <a class='menu1' onclick="activarMenu(3);goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a> <a class='menu1 ' onclick="activarMenu(4);goTo('aNosotros')"><i class="fa fa-car"></i> NOSOTROS</a> <a class='menu1 ' onclick="activarMenu(5);goTo('aCatalogo')"> <i class="fa fa-th"></i> CATÁLOGO</a> <a class='menu1 ' onclick="activarMenu(6);goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a> </li><li> <a href="javascript:void(0)" class="w3-right w3-hide-large w3-hide-medium" onclick="w3_open()"> <i id='barraMenu' class="fa fa-bars w3-padding-right w3-padding-left"></i> </a> </li></ul></div><nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-right w3-hide-medium w3-hide-large" style="display:none;width:200px;right:0;" id="mySidenav"> <a onclick="w3_close();goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a> <a onclick="w3_close();goTo('aCatalogo')"><i class="fa fa-th"></i> CATÁLOGO</a> <a onclick="w3_close();goTo('aNosotros')"><i class="fa fa-car"></i> NOSOTROS</a> <a onclick="w3_close();goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a> <a onclick="w3_close();goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a> <a id='sideMiCuenta' style="padding-top:20px;display:none" onclick="w3_close();goTo('aMiCuenta')"> <i class="fa fa-user"></i> MI CUENTA</a> <a id='sideIngresar' style="padding-top:20px" onclick="w3_close();document.getElementById('txtResponse2').style.display='none';document.getElementById('txtResponse').style.display='none';document.getElementById('id01').style.display='block'"> <i class="fa fa-user"></i> Ingresar</a></nav><script>sideNavFun()</script><div class="col-gris1 w3-display-container" style="" align="center"><div class="col-gris1 " style="padding-top:40px;padding-bottom:0px;overflow:hidden" onmouseover="mOver()" onmouseout="mOut()" > <div class=' w3-hide-small '> <img class="mySlides w3-animate-opacity landscape" src="img/imwide1.jpg" > <img class="mySlides w3-animate-opacity landscape" src="img/imwide2.jpg" > <img class="mySlides w3-animate-opacity landscape" src="img/imwide3.jpg" > </div><div class=' w3-hide-large w3-hide-medium'> <img class="mySlides2 w3-animate-opacity portrait" src="img/imwide1.jpg" > <img class="mySlides2 w3-animate-opacity portrait" src="img/imwide2.jpg" > <img class="mySlides2 w3-animate-opacity portrait " src="img/imwide3.jpg" > </div><!--TEXTO sobre las imagenes <div class="w3-display-topright w3-text-white " style='margin-top:45px' align='right'> <span class="w3-xxlarge w3-hide-small alfa50"> Tu próximo auto, al alcance de tus manos.</span> <span class="w3-xlarge w3-hide-large w3-hide-medium alfa50"> Tu próximo auto, al alcance de tus manos.</span> <BR> <span class=" col-text-salmon alfa50 " style=''> Primer sistema de capitalización por referidos de la Argentina.</span> </div>--><!--<p><a href="#about" class="w3-btn col-salmon w3-padding-large w3-large w3-margin-top w3-opacity-max w3-hover-opacity-off w3-tooltip" > Empezá Ahora</a></p>--> <div class="w3-center w3-text-white " style="width:100%"> <div id='flechaIz' style='cursor:pointer' class=" w3-xxxlarge w3-display-left w3-left w3-padding-left flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(-1)">&#10094;</div><div id='flechaDe' style='cursor:pointer' class=" w3-xxxlarge w3-display-right w3-right w3-padding-right flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(1)">&#10095;</div><div class='w3-display-bottommiddle w3-padding-12'> <span class="w3-badge demo col-gris3 col-hover-text-salmon" onclick="currentDiv(1)"></span> <span class="w3-badge demo col-gris3 col-hover-text-salmon" onclick="currentDiv(2)"></span> <span class="w3-badge demo col-gris3 col-hover-text-salmon" onclick="currentDiv(3)"></span> </div></div></div></div><script>imgSlider()</script><div align='center' style="" class='w3-white w3-display-container' ><div class="w3-container w3-display-container w3-centered w3-container col-amarillo2 w3-padding-8" align='center' id="playstore" style="max-width:500px"> <div class="w3-center w3-centered"> ¡Tu próximo auto te espera en nuestra App! <a href="https://play.google.com/store/apps/details?id=com.gmail.educontratodos.miautoplan1" target="_blank"> <img src="img/google_play_badge.png" class="w3-round " align='center' style="width:140px;height:42px;margin:auto" alt="Playstore"> </a> </div></div></div><a class="anchor" id="aNoticias"></a><div class="w3-container w3-display-container " align='center' id="noticias" > <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span class=" w3-padding-8 col-azul w3-tag w3-wide ">NOTICIAS</span></h5> <div class="w3-container w3-section "> <div id='loaderNoticias'> <p> Cargando noticias... </p><img src="img/loader.gif" class="w3-round " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos"> </div><div id="foo" class=' w3-left-align' style="max-width:800px" > <ul id="lista" class='w3-ul ' > </ul> </div><input id='btnCargarMas' type="button" class="w3-btn col-gris1 w3-center" value=" Cargar más >> " style='display:none'> </div></div><a class="anchor" id="aMiCuenta"></a><div class="w3-container w3-display-container col-gris4 " align='center' id="miCuenta" style='display:none;padding-bottom:40px' style="max-width:800px"> <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span class=" w3-padding-8 col-azul w3-tag w3-wide ">MI CUENTA</span></h5> <div class="w3-center " style="margin-top:0px;max-width:800px"> <div class="w3-half"> <div > <img id="url0" src='img/logo1.png' style="width:100%;height:100%;margin:auto" onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'"> </div><div class='w3-quarter dos'><img id='url1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('url0').src=this.src"></div><div class='w3-quarter dos'><img id='url2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('url0').src=this.src"></div><div class='w3-quarter dos'><img id='url3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('url0').src=this.src"></div><div class='w3-quarter dos'><img id='url4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('url0').src=this.src"></div></div><div id='miCuentaDatos' class="w3-half w3-left w3-row-padding" align='left'> </div></div></div><a class="anchor" id="aCatalogo"></a><div class="w3-container w3-display-container " align='center' id="catalogo" > <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span class=" w3-padding-8 col-azul w3-tag w3-wide ">CATÁLOGO</span></h5> <div class="w3-container w3-section "> <div id='loaderCatalogo'> <p> Cargando... </p><img src="img/loader.gif" class="w3-round " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos"> </div><div id='divAutos' class="" align='left'> </div></div></div><a class="anchor" id="aNosotros"></a><div class="w3-container w3-display-container col-gris4 " align='center' id="nosotros" > <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span class=" w3-padding-8 col-azul w3-tag w3-wide ">NOSOTROS</span></h5> <div class="w3-container w3-section "> <div id="" class=' w3-left-align w3-text-black ' style="max-width:800px;padding:0px" > <h6 class='rn'> <p>MiAutoPlan S.R.L. surge con la intención de cubrir un nicho de negocios puntual, al incorporar experiencia 2.0 al mundo de la venta y financiación de automóviles.</p><p>Dirigidos por Gabriel Mora, el autor intelectual del proyecto, un grupo de jóvenes profesionales de áreas tan diversas como el diseño, la programación y la venta de automóviles, aunaron sus conocimientos, años de experiencia y ganas de emprender para dar nacimiento a este concepto innovador.</p><p></p><p>Lo que diferencia a MiAutoPlan de los planes de ahorro tradicionales es la flexibilidad en el proceso de capitalización al incorporar un Sistema de Referidos, concepto innovador y único en la Argentina. Para ello se cuenta con una App para teléfonos móviles que funciona como centro neurálgico para todas las operaciones, desde seleccionar el modelo hasta gestionar su entrega, pasando por la capitalización indirecta, real y efectiva al recomendar contactos. De esta manera se disminuye exponencialmente la distancia entre el usuario y su objetivo.</p><p>En MiAutoPlan se toma muy en serio una premisa: cada usuario es un potencial dueño de un cero kilómetro.</p></h6> </div></div></div><a class="anchor" id="aFaq"></a><div class="w3-container w3-display-container " align='center' id="faq" > <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span class=" w3-padding-8 col-azul w3-tag w3-wide "> FAQ <BR> Preguntas Frecuentes</span></h5> <div class="w3-container w3-section "> <div id="" class=' w3-left-align w3-text-black ' style="max-width:800px;padding:0px" > <h5 class='rb '>¿Cómo hago para ingresar al sistema?</h5> <h6 class='rn'> Para ingresar al sistema, debe bajarse nuestra APP para celulares con sistema operativo Android desde el Google Play, luego ingresa logeandose con su cuenta de Facebook y/o numero de teléfono celular, ingresando sus datos personales. </h6> <h5 class='rb'>¿Cómo hago para seleccionar un auto?</h5> <h6 class='rn'> Para seleccionar un auto, una vez ingresado a nuestro sistema, en la App sigue los pasos para elegir el auto que desea adquirir y con solo presionar el botón de “Quiero este auto” ya obtienes información en tu cuenta sobre la unidad seleccionada. </h6> <h5 class='rb'>¿Cómo pago la cuota?</h5> <h6 class='rn'> La cuota la puede abonar en los medios autorizados mencionados en la web, los valores se publican en la web y en la App. </h6> <h5 class='rb'>¿Es un plan de ahorro?</h5> <h6 class='rn'> NO, nuestro sistema no es un plan de ahorro! Y si no es un plan de ahorro, que sistema es? Nuestro sistema es un plan de Network Marketing para la compra en cuotas de unidades 0km y/o Usadas, con amplias facilidades de financiación. </h6> <h5 class='rb'>¿Que son las llaves?? Son Cuotas?</h5> <h6 class='rn'> Denominamos llaves a cada cuota que se abona o que se adquiere a través de nuestro sistema de sugeridos (Network Marketing). Una llave equivale a una cuota, la denominamos llave, porque entendemos que cada vez estamos más cerca de nuestro próximo 0km. </h6> <h5 class='rb'>¿Cómo hago si quiero el auto 0km?</h5> <h6 class='rn'> Es muy fácil, con solo presionar el botón “pedir mi auto” en la App y/o en la Web, nuestro sistema reconoce el pedido y se activa el pedido, se analiza la situación crediticia de la persona y el vehículo pedido, la operación se realiza con un asesor, el sistema facilita la carga de datos. </h6> <h5 class='rb'>¿Cómo gano más llaves?</h5> <h6 class='rn'> Desde la App y/o desde la web Ud. puede ganar más llaves, sugiriendo amigos o entorno social, cada vez que Ud. sugiere una persona, el sistema emite un paquete promocional a cada persona sugerida, la cual si se suscribe a nuestro sistema Ud. será premiado con una nueva llave/cuota. </h6> <h5 class='rb'>¿El dinero aportado en diferentes cuotas lo puedo recuperar?</h5> <h6 class='rn'> Si, a diferencia de otros sistemas o modalidad que utilizan los planes de ahorro, Ud. puede rescindir el contrato y su dinero será devuelto, bases y condiciones están estipuladas en el contrato de adhesión. </h6> <h5 class='rb'>¿Qué pasa si pido mi auto y no me lo entregan?</h5> <h6 class='rn'> Ud. al pedir su auto a través de la App Botón “Pedir mi auto”, el sistema ejecuta el pedido a la terminal y al sector análisis de crédito, debe cumplir estrictamente las política de entrega de unidades, si no se procesa la entrega debería ser analizado que política y/o condición de la empresa no cumple. </h6> </div></div></div><a class="anchor" id="aContacto"></a><script src='https://www.google.com/recaptcha/api.js'></script><div id="contacto" class="w3-container w3-display-container col-gris4 w3-text-black" align='center' onsubmit="" action="javascript: sendForm()" target="_self" > <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span class=" w3-padding-8 col-azul w3-tag w3-wide ">CONTACTO</span></h5> <p class="w3-center w3-large">Ingrese sus datos y nos comunicaremos con usted a la brevedad. </p><div class="w3-row" style="margin-top:0px"> <p class="w3-half " style="padding-right: 10px;"><input id='fnombre' class="w3-input w3-border" type="text" placeholder="Nombre" required name="Nombre"></p><p class="w3-half " style="padding-left: 10px;"><input id='ftel' class="w3-input w3-border" type="text" placeholder="Número de Teléfono" required name="Numero"></p><p class=""><input id='fmsj' class="w3-input w3-border" type="text" placeholder="Mensaje" required name="Mensaje"></p><p ><div id='captcha' align='right' class="g-recaptcha" data-sitekey="6LcL_w4UAAAAACBMVOTaW4wqQu5CUeKKC6WNAmf7"></div></p><p id='pEnviar' style='display:block'> <button class="w3-btn w3-padding w3-right col-azul" onclick='sendForm()' align='right'><i class="fa fa-paper-plane"></i> ENVIAR</button> </p><p id='pExito' class='col-amarillo2 col-gris1 w3-padding-small' align='center' style='display:none'>Consulta registrada con éxito <i class="fa fa-check-circle fa-fw w3-margin-right"></i></p><br><br><div align="left"> <p><i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i> Centro de Atención Al Cliente 0800-888-2901</p><p><i class="fa fa-envelope fa-fw w3-xlarge w3-margin-right"> </i> contacto@miautoplan.com</p><p><i class="fa fa-facebook fa-fw w3-xlarge w3-margin-right"> </i> <a target="_blank" href='https://www.facebook.com/miautoplanoficial'>facebook.com/miautoplanoficial</a></p></div><br><div class="w3-half w3-slim w3-left" align='left'> <p class="rb" align="left"> CASA CENTRAL</p><p class="w3-slim"><i class="fa fa-map-marker fa-fw w3-xlarge w3-margin-right"></i> Av. A. Moreau de Justo 1150, piso 3 of. 306 (CABA)</p><p><i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i> (011) 5353-4818</p></div><div class="w3-half"><div id="googleMapCentral" class="w3-greyscale-min" style="width:100%;height:250px;"></div></div></div><br><br><div class="w3-half w3-left" align='left'> <p class="rb w3-container" align="left"> SUCURSAL CORRIENTES</p><p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> C. Pellegrini 1140, 1ro C (Corrientes)</p><p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> (0379) 4292901</p><p><i class="fa fa-mobile-phone fa-fw w3-xxlarge w3-margin-right"></i> (0379) 154-620235</p></div><div class="w3-half"> <div id="googleMap" class="w3-greyscale-min" style="width:100%;height:250px;"></div></div></div></div><footer class="w3-center w3-black w3-padding-64"> <a class="w3-btn w3-padding w3-light-grey w3-hover-grey" onclick="goTo('aTop')"><i class="fa fa-arrow-up w3-margin-right"></i>Subir</a><!-- <div class="w3-xlarge w3-section"> <i class="fa fa-facebook-official w3-hover-text-indigo"></i> <i class="fa fa-flickr w3-hover-text-red"></i> <i class="fa fa-instagram w3-hover-text-purple"></i> <i class="fa fa-twitter w3-hover-text-light-blue"></i> <i class="fa fa-linkedin w3-hover-text-indigo"></i> </div>--></footer><div id="id01" class="w3-modal"> <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px"> <div class="w3-center"><br><span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn col-hover-salmon w3-container w3-padding-8 w3-display-topright" title="Cerrar">&times;</span> <img src="img/logo1.png" style="width:30%" class=""> </div><div class="w3-container" > <div class="w3-section "> <button id="btnIngresarFB" class="w3-btn-block col-azul w3-section w3-padding"> <i class="fa fa-facebook fa-fw w3-xlarge w3-margin-right"></i>Ingresar con Facebook</button> <h5 id='txtResponse2' align='right' class="col-text-salmon"> Su cuenta de facebook no está asociada a MiAutoPlan. Intente con su número y contraseña. </h5> <div align='left' class="w3-padding-8 w3-padding ">O con su Número de Teléfono:</div><input id='cam1' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Número de teléfono" > <input id='cam2' class="w3-input w3-border" type="password" placeholder="Contraseña" > <h5 id='txtResponse' align='right' class="col-text-salmon"> Contraseña Incorrecta! </h5> <button id="btnIngresar" align='right' style='width:50%' class="w3-right w3-btn col-azul w3-section w3-padding">Ingresar</button><!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>--> </div></div><div class="w3-container w3-border-top w3-padding-8 w3-light-grey"> <span class="w3-right w3-padding ">¿Olvidó la <a href="#">contraseña?</a></span> </div></div></div><div id="det" class="w3-modal w3-container w3-padding-8"> <div class="w3-content w3-row w3-card-8 w3-container w3-animate-zoom" style="background-color:#fff"> <span onclick="document.getElementById('det').style.display='none'" class="w3-closebtn col-text-gris1 w3-padding-4 w3-xlarge col-hover-salmon w3-container" title="Cerrar">&times;</span> <BR> <div class='w3-half'> <div > <img id="durl0" src='img/logo1.png' style="width:100%;height:100%;margin:auto" onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'"> </div><div class='w3-quarter dos'><img id='durl1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('durl0').src=this.src"></div><div class='w3-quarter dos'><img id='durl2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('durl0').src=this.src"></div><div class='w3-quarter dos'><img id='durl3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('durl0').src=this.src"></div><div class='w3-quarter dos'><img id='durl4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('durl0').src=this.src"></div></div><div class='w3-half '> <div class='col-text-gris1 w3-margin-left '> <div class=' '> <span id="dautonombre" class='rb w3-large col-text-gris1 ' ></span> </div><div id="dautodescripcion" class='bordeAmarillo2 col-text-gris1 w3-small'>(descripcion)</div><div class=' w3-row w3-medium w3-padding col-gris4'> <div class='w3-half dos col-text-gris1'>Llaves: <SPAN id="dautollaves" class=' rb'></SPAN></div><div class='w3-half dos col-text-gris1' align='right'>Precio Final: <SPAN id="dautoprecio" class=' rb'></SPAN></div></div><div class='w3-btn w3-col w3-tag col-azul w3-padding-8 w3-margin-top w3-margin-bottom ' id='' >Quiero Este Auto</div></div></div></div></div><div id="modal01" class="w3-modal" onclick="this.style.display='none'"> <span class="w3-closebtn w3-text-white col-hover-salmon w3-container w3-padding-16 w3-display-topright">&times;</span> <div class="w3-modal-content w3-animate-zoom"> <img id='modalImg' src="" style="width:100%;z-index=2"> </div></div><div id="loaderProceso" class="w3-modal " align='center'> <div class="w3-modal-content " style="max-width:600px;" align='center'> <div class="w3-center" style='position: fixed;top: 45%;left:47%;' align='center'> <img src="img/loader.gif" class="w3-round trans " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos"> </div></div></div><div id="modalMasLlaves" class="w3-modal"> <div class="w3-modal-content w3-card-8"> <header class="w3-container col-azul "> <span onclick="document.getElementById('modalMasLlaves').style.display='none'"class="w3-closebtn w3-container w3-padding-8 col-hover-salmon w3-display-topright" title="Cerrar">&times;</span> <p class="w3-large w3-text-white">CONSEGUIR MÁS LLAVES</p></header> <div class="w3-container"> <p>Desde la <span class='rb'>App de MiAutoPlan</span>, usted selecciona de su lista de contactos a aquellos que considera podrían estar interesados en adquirir un plan.</p><p>Por cada REFERIDO que se registre en nuestro sistema, a usted se le acreditará una LLAVE (es decir, una cuota de su plan. Para más información, ver 'FAQs: Preguntas Frecuentes').</p><p>Por el momento, esta función sólo se encuentra disponible desde la <span class='rb'>App de MiAutoPlan</span>.</p></div><!-- <footer class="w3-container w3-teal"> <p>Modal Footer</p></footer> --> </div></div><div id="modalPedirMiAuto" class="w3-modal"> <div class="w3-modal-content w3-card-8"> <header class="w3-container col-azul "> <span onclick="document.getElementById('modalPedirMiAuto').style.display='none'"class="w3-closebtn w3-container w3-padding-8 col-hover-salmon w3-display-topright" title="Cerrar">&times;</span> <p class="w3-large w3-text-white">PEDIR MI AUTO</p></header> <div class="w3-container"> <p>Desde la <span class='rb'>App de MiAutoPlan</span> seleccione la opción 'Pedir MiAuto', de esta manera empezamos a gestionar los trámites necesarios para la entrega del mismo. Para ello, debe contar con los requisitos de entrega (ver 'FAQs: Preguntas Frecuentes').</p><p>Por el momento, esta función sólo se encuentra disponible desde la App de MiAutoPlan. Ante cualquier duda, puede solicitar un asesor que lo orientará en el proceso.</p></div><!-- <footer class="w3-container w3-teal"> <p>Modal Footer</p></footer> --> </div></div><script></script></body></html>
+<!DOCTYPE html>
+<meta charset=utf-8>
+<html>
+<title>MiAuto Plan - Sitio Oficial</title>
+<!--
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<link rel="stylesheet" href="lib2/fuentes.css">-->
+
+<link href="https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext" rel="stylesheet">
+<!--<link href="https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext" rel="stylesheet"  type='text/css'>-->
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
+</style>
+<link rel="stylesheet" href="lib2/css/font-awesome.min.css">
+
+<script language="javascript" type="text/javascript" src="lib/p5.min.js"></script>
+<!-- uncomment lines below to include extra p5 libraries -->
+<script language="javascript" src="lib/p5.dom.min.js"></script>
+<!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
+
+<!---->
+<script language="javascript" type="text/javascript" src="p.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
+<script language="javascript" type="text/javascript" src="fun.min.js"></script>
+<script language="javascript" type="text/javascript" src="funcat.min.js"></script>
+<script language="javascript" type="text/javascript" src="funfb.min.js"></script>
+<script language="javascript" type="text/javascript" src="funing.min.js"></script>
+
+
+<!--
+
+<script language="javascript" type="text/javascript" src="p.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnRJHYaL6y15Qqt3j0Lr2ZWPty7NpV280"></script>
+<script language="javascript" type="text/javascript" src="fun.js"></script>
+<script language="javascript" type="text/javascript" src="funcat.js"></script>
+<script language="javascript" type="text/javascript" src="funfb.js"></script>
+<script language="javascript" type="text/javascript" src="funing.js"></script>
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<link rel="stylesheet" href="lib2/w3.css">
+<link rel="stylesheet" href="lib2/tema.css">
+<link rel="stylesheet" href="styles1.css">
+
+
+<body>
+<script language="javascript" type="text/javascript">
+  var x = document.domain;
+  //console.log(x);
+  if(x=="ahbuenotefelicito.com"){
+    window.location.replace("test");
+    history.replaceState('data to be passed', 'Title of the page', 'http://stackoverflow.com/test');
+  }
+  if(x=="miautoplan.com"){
+    window.location.hostname = "www.miautoplan.com";
+  }
+</script>
+
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-- Navbar +  -->
+<a class="anchor" id="aTop"></a>
+<div class="w3-top">
+  <ul class="w3-navbar w3-card-2 w3-theme " id="myNavbar">
+    <li>
+      <!--<a href="#home" class="w3-wide">MiAuto Plan</a>-->
+      <a  style='padding:0px;margin-left:20px' class="w3-display-left"
+        onclick="" id="logoBarra" >
+        <img src="img/logo256.png"  height="55px" width="55px">
+      </a>
+    </li>
+    <!-- Right-sided navbar links -->
+    <li class="w3-right w3-hide-small " id="barraMenuOpciones">
+      <a id='menuIngresar' class='menu1 rb' onclick="activarMenu(0);document.getElementById('txtResponse2').style.display='none';document.getElementById('txtResponse').style.display='none';document.getElementById('id01').style.display='block'">
+        <i class="fa fa-user"></i> INGRESAR</a>
+      <a id='menuMiCuenta' class='menu1 rb' onclick="activarMenu(1);goTo('aMiCuenta')"
+         style='display:none'><i class="fa fa-user"></i> MI CUENTA</a>
+      <a class='menu1 ' onclick="activarMenu(2);goTo('aNosotros')"><i class="fa fa-car"></i> NOSOTROS</a>
+      <a class='menu1 ' onclick="activarMenu(3);goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
+      <a class='menu1' onclick="activarMenu(4);goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
+      <a class='menu1 ' onclick="activarMenu(5);goTo('aCatalogo')">  <i class="fa fa-th"></i> CATÁLOGO</a>
+      <!--<a href="#aNoticias" class='menu1 ' onclick="activarMenu(5)"><i class="fa fa-home"></i> INICIO</a>-->
+      <a class='menu1 ' onclick="activarMenu(6);goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a>
+    </li>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+    <li>
+      <a href="javascript:void(0)" class="w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        <i id='barraMenu' class="fa fa-bars w3-padding-right w3-padding-left"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- SIDEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
+<nav class="w3-sidenav w3-theme-l1 w3-card-2 w3-animate-right w3-hide-medium w3-hide-large"
+  style="display:none;width:200px;right:0;" id="mySidenav">
+  <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">x Cerrar</a>-->
+  <a onclick="w3_close();goTo('aNoticias')"><i class="fa fa-home"></i> INICIO</a>
+  <a onclick="w3_close();goTo('aCatalogo')"><i class="fa fa-th"></i> CATÁLOGO</a>
+  <a onclick="w3_close();goTo('aNosotros')"><i class="fa fa-car"></i> NOSOTROS</a>
+  <a onclick="w3_close();goTo('aFaq')"><i class="fa fa-question-circle-o"></i> FAQ</a>
+  <a onclick="w3_close();goTo('aContacto')"><i class="fa fa-envelope"></i> CONTACTO</a>
+  <a id='sideMiCuenta' style="padding-top:20px;display:none" onclick="w3_close();goTo('aMiCuenta')">
+    <i class="fa fa-user"></i> MI CUENTA</a>
+  <a id='sideIngresar' style="padding-top:20px" onclick="w3_close();document.getElementById('txtResponse2').style.display='none';document.getElementById('txtResponse').style.display='none';document.getElementById('id01').style.display='block'">
+    <i class="fa fa-user"></i> Ingresar</a>
+</nav>
+<script> sideNavFun()</script>
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-- /////////////////////////////////////////////// secciones ///////////////////////// /-->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+<!-- ///////////////////////// PORTADA SLIDE ///////////////////////////////////////
+<!---->
+<a class="anchor" id="aNoticias"></a>
+<div class="col-gris1 w3-display-container" style="" align="center">
+<div class="col-gris1  " style="padding-top:40px;padding-bottom:0px;overflow:hidden"
+  onmouseover="mOver()" onmouseout="mOut()" >
+  <div class=' w3-hide-small '>
+    <img class="mySlides w3-animate-opacity landscape" src="img/s01.jpg" >
+    <img class="mySlides w3-animate-opacity landscape" src="img/s02.jpg" >
+  </div>
+  <div class=' w3-hide-large w3-hide-medium'>
+    <!--<img class="mySlides2 w3-animate-opacity portrait" src="img/s01.jpg" >
+    <img class="mySlides2 w3-animate-opacity portrait" src="img/s02.jpg" >-->
+    <img class="mySlides2 w3-animate-opacity landscape" src="img/s01.jpg" >
+    <img class="mySlides2 w3-animate-opacity landscape" src="img/s02.jpg" >
+  </div>
+  <div class="w3-center w3-text-white " style="width:100%">
+    <div id='flechaIz' style='cursor:pointer' class=" w3-xxxlarge w3-display-left w3-left w3-padding-left flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(-1)">&#10094;</div>
+    <div id='flechaDe' style='cursor:pointer' class=" w3-xxxlarge w3-display-right w3-right w3-padding-right flecha col-text-gris4 col-hover-text-salmon" onclick="plusDivs(1)">&#10095;</div>
+    <div class='w3-display-bottommiddle w3-padding-12'>
+      <span class="w3-badge demo  col-gris3 col-hover-text-salmon" onclick="currentDiv(1)"></span>
+      <span class="w3-badge demo  col-gris3 col-hover-text-salmon" onclick="currentDiv(2)"></span>
+
+    </div>
+  </div>
+</div>
+</div>
+<script> imgSlider()</script>
+
+
+<!--/////////////IMAGEN PORTADA SIN SLIDE-->
+<!--
+<div class="w3-display-container" style="" align="center">
+<div class="  " style="padding-top:50px;padding-bottom:0px;overflow:hidden">
+  <img class="landscape" src="img/s01.jpg" >
+</div>
+</div>
+-->
+
+
+<!-- ///////////////////////// INICIO-NOTICIAS /////////////////////////////////////// -->
+
+<div class="w3-container w3-display-container " align='center' id="noticias" >
+  <!--
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">NOTICIAS</span></h5>
+  -->
+  <div class="w3-container w3-section  ">
+    <div id='loaderNoticias'>
+      <p> Cargando noticias... </p>
+      <img  src="img/loader.gif" class="w3-round  " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
+    </div>
+    <div id="foo" class=' w3-left-align'  style="max-width:800px" >
+      <ul id="lista" class='w3-ul ' >
+      </ul>
+    </div>
+    <input id='btnCargarMas' type="button" class="w3-btn col-gris1 w3-center" value="  Cargar más  >>  " style='display:none'>
+  </div>
+</div>
+<!-- ///////////////////////// Link PLAY Store /////////////////////////////////////// -->
+<!---->
+<div align='center' style="" class='w3-white w3-display-container' >
+<div class="w3-container w3-display-container  w3-centered w3-container col-amarillo2 w3-padding-8"
+  align='center' id="playstore" style="max-width:500px">
+  <a href="https://play.google.com/store/apps/details?id=com.gmail.educontratodos.miautoplan1" target="_blank">
+    <div class="w3-center w3-centered">
+      ¡Tu próximo auto te espera en nuestra App!
+      <img src="img/google_play_badge.png" class="w3-round " align='center' style="width:140px;height:42px;margin:auto" alt="Playstore">
+    </div>
+  </a>
+</div>
+</div>
+
+<!-- ///////////////////////// MI CUENTA /////////////////////////////////////// -->
+<a class="anchor" id="aMiCuenta"></a>
+<div class="w3-container w3-display-container col-gris4 " align='center'  id="miCuenta" style='display:none;padding-bottom:40px' style="max-width:800px">
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">MI CUENTA</span></h5>
+  <div class="w3-center " style="margin-top:0px;max-width:800px">
+    <div class="w3-half"> <!-- IMAGENES -->
+      <div  >
+        <img id="url0" src='img/logo1.png' style="width:100%;height:100%;margin:auto"
+        onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'">
+      </div>
+      <div class='w3-quarter dos'><img id='url1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('url0').src=this.src"></div>
+      <div class='w3-quarter dos'><img id='url4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('url0').src=this.src"></div>
+
+    </div>
+    <div id='miCuentaDatos' class="w3-half w3-left w3-row-padding" align='left'>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ///////////////////////// CATALOGO /////////////////////////////////////// -->
+<a class="anchor" id="aCatalogo"></a>
+<div class="w3-container w3-display-container " align='center' id="catalogo" >
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">CATÁLOGO</span></h5>
+  <div class="w3-container w3-section  ">
+    <div id='loaderCatalogo'>
+      <p> Cargando... </p>
+      <img  src="img/loader.gif" class="w3-round  " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
+    </div>
+    <div id='divAutos'  class="" align='left'>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ///////////////////////// FAQ /////////////////////////////////////// -->
+<a class="anchor" id="aFaq"></a>
+<div class="w3-container w3-display-container " align='center' id="faq" >
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px">
+    <span  class=" w3-padding-8 col-azul w3-tag w3-wide "> FAQ <BR> Preguntas Frecuentes</span></h5>
+    <div class="w3-container w3-section  ">
+      <div style="max-width:800px">
+        <div class="videoWrapper" >
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/HzijBRtBYs0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="" class=' w3-left-align w3-text-black '  style="max-width:800px;padding:0px" >
+        <h5 class='rb  '>¿Cómo hago para ingresar al sistema?</h5>
+        <h6 class='rn w3-small'> Para ingresar al sistema, debe bajarse nuestra APP para celulares con sistema operativo Android desde el Google Play, luego ingresa logeandose con su cuenta de Facebook y/o numero de teléfono celular, ingresando sus datos personales.
+        </h6>
+        <h5 class='rb'>¿Cómo hago para seleccionar un auto?</h5>
+        <h6 class='rn w3-small'> Para seleccionar un auto, una vez ingresado a nuestro sistema, en la App sigue los pasos para elegir el auto que desea adquirir y con solo presionar el botón de “Quiero este auto” ya obtienes información en tu cuenta sobre la unidad seleccionada.
+        </h6>
+        <h5 class='rb'>¿Cómo pago la cuota?</h5>
+        <h6 class='rn w3-small'> La cuota la puede abonar en los medios autorizados mencionados en la web, los valores se publican en la web y en la App.
+        </h6>
+        <h5 class='rb'>¿Es un plan de ahorro?</h5>
+        <h6 class='rn w3-small'> NO, nuestro sistema no es un plan de ahorro!
+        Y si no es un plan de ahorro, que sistema es?
+        Nuestro sistema es un plan de Network Marketing para la compra en cuotas de unidades 0km y/o Usadas, con amplias facilidades de financiación.
+        </h6>
+        <h5 class='rb'>¿Que son las llaves?? Son Cuotas?</h5>
+        <h6 class='rn w3-small'> Denominamos llaves a cada cuota que se abona o que se adquiere a través de nuestro sistema de sugeridos (Network Marketing). Una llave equivale a una cuota, la denominamos llave, porque entendemos que cada vez estamos más cerca de nuestro próximo 0km.
+        </h6>
+        <h5 class='rb'>¿Cómo hago si quiero el auto 0km?</h5>
+        <h6 class='rn w3-small'> Es muy fácil, con solo presionar el botón “pedir mi auto” en la App y/o en la Web, nuestro sistema reconoce el pedido y se activa el pedido, se analiza la situación crediticia de la persona y el vehículo pedido, la operación se realiza con un asesor, el sistema facilita la carga de datos.
+        </h6>
+        <h5 class='rb'>¿Cómo gano más llaves?</h5>
+        <h6 class='rn w3-small'> Desde la App y/o desde la web Ud. puede ganar más llaves, sugiriendo amigos o entorno social, cada vez que Ud. sugiere una persona, el sistema emite un paquete promocional a cada persona sugerida, la cual si se suscribe a nuestro sistema Ud. será premiado con una nueva llave/cuota.
+        </h6>
+        <h5 class='rb'>¿El dinero aportado en diferentes cuotas lo puedo recuperar?</h5>
+        <h6 class='rn w3-small'> Si, a diferencia de otros sistemas o modalidad que utilizan los planes de ahorro, Ud. puede rescindir el contrato y su dinero será devuelto, bases y condiciones están estipuladas en el contrato de adhesión.
+        </h6>
+    </div>
+  </div>
+</div>
+
+
+<!-- //////////////////////////////////////// CONTACTO ///////////////////////////-->
+<a class="anchor" id="aContacto"></a>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div id="contacto" class="w3-container w3-display-container  col-gris4 w3-text-black" align='center'
+  onsubmit="" action="javascript: sendForm()" target="_self" >
+  <h5 class="w3-center w3-container col-azul " style="max-width:800px">
+    <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">CONTACTO</span></h5>
+  <!--<h3 class="w3-center">INFORMACIÓN DE CONTACTO</h3>-->
+  <div style="max-width:800px">
+    <p class="w3-center w3-large">Ingrese sus datos y nos comunicaremos con usted a la brevedad. </p>
+    <div class="w3-row" style="margin-top:0px">
+      <p class="w3-half " style="padding-right: 10px;"><input id='fnombre' class="w3-input w3-border" type="text" placeholder="Nombre" required name="Nombre"></p>
+      <p class="w3-half " style="padding-left: 10px;"><input id='ftel' class="w3-input w3-border" type="text" placeholder="Número de Teléfono" required name="Numero"></p>
+      <p class=""><input id='fmsj' class="w3-input w3-border" type="text" placeholder="Mensaje" required name="Mensaje"></p>
+      <p ><div id='captcha' align='right' class="g-recaptcha" data-sitekey="6LcL_w4UAAAAACBMVOTaW4wqQu5CUeKKC6WNAmf7"></div></p>
+      <p id='pEnviar' style='display:block'>
+        <!--<button class="w3-btn w3-padding w3-right col-azul" type="submit" align='right'>-->
+        <button class="w3-btn w3-padding w3-right col-azul" onclick='sendForm()' align='right'><i class="fa fa-paper-plane"></i>  ENVIAR</button>
+      </p>
+      <p id='pExito' class='col-amarillo2 col-gris1 w3-padding-small' align='center' style='display:none'>Consulta registrada con éxito
+        <i class="fa fa-check-circle fa-fw w3-margin-right"></i></p>
+      <br>
+      <br>
+    </div>
+    <!--
+    <div align="left" class="w3-large">
+      <p class="rb w3-large" align="left"> CENTRO DE ATENCIÓN AL CLIENTE</p>
+      <p><i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i> 0800-888-2901</p>
+      <p><i class="fa fa-envelope fa-fw w3-xlarge w3-margin-right"> </i> contacto@miautoplan.com</p>
+      <p><i class="fa fa-facebook fa-fw w3-xlarge w3-margin-right"> </i> <a target="_blank" href='https://www.facebook.com/miautoplanoficial'>facebook.com/miautoplanoficial</a></p>
+    </div>
+    <br>
+    -->
+    <div style="max-width:800px">
+      <div class="w3-half  w3-large w3-slim w3-left" align='left'>
+        <div   style='margin-right:10%;'>
+          <p class="rb" align="left"> CASA CENTRAL</p>
+          <p class="w3-small"><i class="fa fa-map-marker fa-fw w3-large w3-margin-right"></i> Av. A. Moreau de Justo 1150,  3° Piso- Of. 3, Dock 8. Puerto Madero, CABA.</p>
+          <p class="w3-small"><i class="fa fa-phone fa-fw w3-large w3-margin-right"></i> (011) 5353-4818</p>
+          <!--</form>-->
+        </div>
+      </div>
+      <!--
+      <div class="w3-half"><div id="googleMapCentral" class="w3-greyscale-min" style="width:100%;height:250px;"></div></div>
+      -->
+
+      <div class="w3-half w3-left  w3-large" align='left' >
+        <div   style='margin-left:0%;'>
+          <p class="rb " align="left"> SUCURSAL CORRIENTES</p>
+          <p class="w3-small"><i class="fa fa-map-marker fa-fw w3-large w3-margin-right"></i> Carlos Pellegrini 1140 1° Piso C. Corrientes.</p>
+          <p class="w3-small"><i class="fa fa-phone fa-fw w3-large w3-margin-right"></i> (0379) 4439000</p>
+            <!--<p><i class="fa fa-mobile-phone fa-fw w3-xlarge w3-margin-right"></i> (0379) 154-620235</p>-->
+          <!--</form>-->
+        </div>
+      </div>
+    </div>
+    </div>
+    <br>
+    <br>
+
+
+    <!--
+    <div class="w3-half"><div id="googleMap" class="w3-greyscale-min" style="width:100%;height:250px;"></div>
+    -->
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="w3-center col-gris-2 w3-padding-0">
+  <!--
+  <a class="w3-btn w3-padding col-azul " onclick="goTo('aTop')"><i class="fa fa-arrow-up w3-margin-right"></i>Subir</a>
+  -->
+
+  <!-- ///////////////////////// NOSOTROS /////////////////////////////////////// -->
+  <a class="anchor" id="aNosotros"></a>
+  <div class="w3-container w3-display-container  " align='center' id="nosotros" >
+    <h5 class="w3-center w3-container col-azul " style="max-width:800px"> <span  class=" w3-padding-8 col-azul w3-tag w3-wide ">NOSOTROS</span></h5>
+    <div class="w3-container w3-section  ">
+      <div id="" class=' w3-left-align w3-text-black '  style="max-width:800px;padding:0px" >
+        <h6 class='rn'>
+          <p>MiAutoPlan S.R.L. surge con la intención de cubrir un nicho de negocios puntual, al incorporar experiencia 2.0 al mundo de la venta y financiación de automóviles.</p>
+          <p>Un grupo de jóvenes profesionales de áreas tan diversas como el diseño, la programación y la venta de automóviles, aunaron sus conocimientos, años de experiencia y ganas de emprender para dar nacimiento a este concepto innovador.</p>
+          <p></p>
+          <p>Lo que diferencia a MiAutoPlan, de los planes de ahorro tradicionales, es la flexibilidad en el proceso de capitalización al incorporar un Sistema de Referidos, concepto innovador y único en la Argentina. Para ello se cuenta con una App para teléfonos móviles que funciona como centro neurálgico para todas las operaciones, desde seleccionar el modelo hasta gestionar su entrega, pasando por la capitalización indirecta, real y efectiva al recomendar contactos. De esta manera se disminuye exponencialmente la distancia entre el usuario y su objetivo.</p>
+          <p>En MiAutoPlan se toma muy en serio una premisa: cada usuario es un potencial dueño de un cero kilómetro.</p>
+        </h6>
+    </div>
+    </div>
+  </div>
+
+  <img src="img/logo2.png" alt="Mountain View" style="width:200px;height:146;">
+  <div class="w3-xxxlarge w3-section">
+     <a target="_blank" href='https://www.facebook.com/miautoplanoficial'><i class="fa fa-facebook-official w3-hover-text-indigo"></i></a>
+     <a target="_blank" href='mailto:contacto@miautoplan.com'><i class="fa fa-envelope w3-hover-text-red"></i></a>
+    <i class="fa fa-instagram w3-hover-text-purple"></i>
+  </div>
+
+
+
+<div  class="w3-content " align="center"  >
+  <div style="max-width:800px"  class="w3-container  " align='' >
+  <div class="w3-half  w3-large " >
+    <div   style='margin-right:0%;'>
+      <p class="rb w3-small" align="center"> Visitá nuestro e-shop en MercadoLibre.com</p>
+      <a href="http://www.mercadolibre.com.ar">
+        <img src="img/ml.jpg" alt="MercadoLibre.com" style="width:100px;height:100;">
+      </a>
+    </div>
+  </div>
+
+  <div class="w3-half   w3-large"  >
+    <div   style='margin-left:0;'>
+      <p class="rb w3-small" align="center"> Pagá cuotas con la facilidad y seguridad de MercadoPago</p>
+        <img src="img/mp.png" alt="MercadoPago.com" style="width:100px;height:100;">
+    </div>
+  </div>
+</div>
+</div>
+
+  <div class="w3-section col-gris1 ">
+    <p class="w3-text-white"> Centro de Atención al Cliente <i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i>0800-888-2901</p>
+  </div>
+    <p>El uso de este sitio web o de la App oficial de "Mi Auto Plan" implica la aceptación de los
+      <a href="javascript:void(0)" onclick="document.getElementById('terminos').style.display='block'" class='col-text-azul'>Términos y Condiciones</a> de miautoplan.com</P>
+    <p> ©2017 miautoplan.com, Mi Auto Plan. Todos los derechos reservados. </P>
+</div>
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////-->
+
+
+<!--////////////////////////////////// TERMINOS y CONDICIONES /////////////////////////////////////////////////-->
+<div id="terminos" class="w3-modal">
+  <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+    <header class="w3-container col-azul ">
+      <span onclick="document.getElementById('terminos').style.display='none'"class="w3-closebtn w3-container w3-padding-8 col-hover-salmon w3-display-topright" title="Cerrar">&times;</span>
+      <p class="w3-large w3-text-white">Términos y Condiciones de Uso</p>
+    </header>
+
+
+    <div class="w3-container"  >
+      <div class="w3-section" height="900px" style="max-width:600px" >
+        <iframe src="tyc.txt" height="400px" width="100%" style='overflow:auto;border:none'></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--////////////////////////////////// LOGIN /////////////////////////////////////////////////-->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn col-hover-salmon w3-container w3-padding-8 w3-display-topright" title="Cerrar">&times;</span>
+        <img src="img/logo1.png"  style="width:30%" class="">
+      </div>
+      <div class="w3-container" >
+        <div class="w3-section ">
+          <button id="btnIngresarFB" class="w3-btn-block col-azul w3-section w3-padding"> <i class="fa fa-facebook fa-fw w3-xlarge w3-margin-right"></i>Ingresar con Facebook</button>
+          <h5 id='txtResponse2' align='right' class="col-text-salmon"> Su cuenta de facebook no está asociada a MiAutoPlan. Intente con su número y contraseña. </h5>
+          <div align='left' class="w3-padding-8  w3-padding ">O con su Número de Teléfono:</div>
+          <!--<label><b>Numero de teléfono</b></label>-->
+          <input id='cam1' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Número de teléfono" >
+          <!--<label><b>Contraseña</b></label>-->
+          <input id='cam2' class="w3-input w3-border" type="password" placeholder="Contraseña"  >
+          <h5 id='txtResponse' align='right' class="col-text-salmon"> Contraseña Incorrecta! </h5>
+
+
+          <button id="btnIngresar" align='right' style='width:50%' class="w3-right w3-btn col-azul w3-section w3-padding">Ingresar</button>
+          <!--<input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me-->
+          <!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>-->
+        </div>
+      </div>
+      <div class="w3-container w3-border-top w3-padding-8 w3-light-grey">
+
+        <span class="w3-right w3-padding ">¿Olvidó la <a href="#">contraseña?</a></span>
+      </div>
+    </div>
+  </div>
+  <!--////////////////////////////////// DETALLES /////////////////////////////////////////////////-->
+  <div id="det" class="w3-modal w3-container w3-padding-8">
+      <div class="w3-content w3-row w3-card-8 w3-container  w3-animate-zoom" style="background-color:#fff">
+        <!--<div class="w3-row" style="width:100%">-->
+        <span onclick="document.getElementById('det').style.display='none'" class="w3-closebtn  col-text-gris1 w3-padding-4 w3-xlarge col-hover-salmon w3-container"   title="Cerrar">&times;</span>
+          <BR>
+          <div class='w3-half'>
+
+            <!--<img src="img/logo1.png"  style="width:30%" class="">-->
+            <div  >
+              <img id="durl0" src='img/logo1.png' style="width:100%;height:100%;margin:auto"
+              onclick="document.getElementById('modalImg').src=this.src;document.getElementById('modal01').style.display='block'">
+            </div>
+            <div class='w3-quarter dos'><img id='durl1' src='' style="width:100%;height:100%" alt='1' onclick="document.getElementById('durl0').src=this.src"></div>
+            <div class='w3-quarter dos'><img id='durl2' src='' style="width:100%;height:100%" alt='2' onclick="document.getElementById('durl0').src=this.src"></div>
+            <div class='w3-quarter dos'><img id='durl3' src='' style="width:100%;height:100%" alt='3' onclick="document.getElementById('durl0').src=this.src"></div>
+            <div class='w3-quarter dos'><img id='durl4' src='' style="width:100%;height:100%" alt='4' onclick="document.getElementById('durl0').src=this.src"></div>
+          </div>
+          <div class='w3-half '>
+
+            <div class='col-text-gris1 w3-margin-left '>
+              <div class='   '>
+                <span id="dautonombre" class='rb  w3-large col-text-gris1  ' ></span>
+              </div>
+              <div id="dautodescripcion" class='bordeAmarillo2   col-text-gris1 w3-small'>(descripcion)</div>
+              <div class=' w3-row  w3-medium w3-padding  col-gris4'>
+                <div  class='w3-half dos col-text-gris1'>Llaves: <SPAN id="dautollaves" class=' rb'></SPAN></div>
+                <div  class='w3-half dos col-text-gris1' align='right'>Precio Final: <SPAN id="dautoprecio" class=' rb'></SPAN></div>
+              </div>
+              <div class='w3-btn w3-col w3-tag col-azul w3-padding-8 w3-margin-top w3-margin-bottom ' id='' >Quiero Este Auto</div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+    <!-- ///////////////////////// MODAL IMG /////////////////////////////////////// -->
+    <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+      <span class="w3-closebtn w3-text-white  col-hover-salmon w3-container w3-padding-16 w3-display-topright">&times;</span>
+      <div class="w3-modal-content w3-animate-zoom">
+        <img id='modalImg' src="" style="width:100%;z-index=2">
+      </div>
+    </div>
+  <!--////////////////////////////////// PROCESANDO /////////////////////////////////////////////////-->
+  <div id="loaderProceso" class="w3-modal " align='center'>
+      <div class="w3-modal-content " style="max-width:600px;" align='center'>
+        <div class="w3-center" style='position: fixed;top: 45%;left:47%;' align='center'>
+            <img  src="img/loader.gif" class="w3-round trans " align='center' style="width:40px;height:40px;margin:auto" alt="Cargando datos">
+        </div>
+      </div>
+  </div>
+  <!--////////////////////////////////// MSJ LLAVES /////////////////////////////////////////////////-->
+  <div id="modalMasLlaves" class="w3-modal">
+    <div class="w3-modal-content w3-card-8">
+      <header class="w3-container col-azul ">
+        <span onclick="document.getElementById('modalMasLlaves').style.display='none'"class="w3-closebtn w3-container w3-padding-8 col-hover-salmon w3-display-topright" title="Cerrar">&times;</span>
+        <p class="w3-large w3-text-white">CONSEGUIR MÁS LLAVES</p>
+      </header>
+      <div class="w3-container">
+        <p>Desde la <span class='rb'>App de MiAutoPlan</span>, usted selecciona de su lista de contactos a aquellos que considera podrían estar interesados en adquirir un plan.</p>
+        <p>Por cada REFERIDO que se registre en nuestro sistema, a usted se le acreditará una LLAVE (es decir, una cuota de su plan. Para más información, ver 'FAQs: Preguntas Frecuentes').</p>
+        <p>Por el momento, esta función sólo se encuentra disponible desde la <span class='rb'>App de MiAutoPlan</span>.</p>
+      </div>
+      <!--
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
+      -->
+    </div>
+  </div>
+
+  <!--////////////////////////////////// MSJ PEDIR MI AUTO /////////////////////////////////////////////////-->
+  <div id="modalPedirMiAuto" class="w3-modal">
+    <div class="w3-modal-content w3-card-8">
+      <header class="w3-container col-azul ">
+        <span onclick="document.getElementById('modalPedirMiAuto').style.display='none'"class="w3-closebtn w3-container w3-padding-8 col-hover-salmon w3-display-topright" title="Cerrar">&times;</span>
+        <p class="w3-large w3-text-white">PEDIR MI AUTO</p>
+      </header>
+      <div class="w3-container">
+        <p>Desde la <span class='rb'>App de MiAutoPlan</span> seleccione la opción 'Pedir MiAuto', de esta manera empezamos a gestionar los trámites necesarios para la entrega del mismo. Para ello, debe contar con los requisitos de entrega (ver 'FAQs: Preguntas Frecuentes').</p>
+        <p>Por el momento, esta función sólo se encuentra disponible desde la App de MiAutoPlan. Ante cualquier duda, puede solicitar un asesor que lo orientará en el proceso.</p>
+      </div>
+      <!--
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
+      -->
+    </div>
+  </div>
+<!-- ////////////////////////////////////////////////Add Google Maps -->
+
+<script>
+
+</script>
+
+</body>
+</html>

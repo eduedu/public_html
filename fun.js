@@ -88,17 +88,36 @@ function sendForm(){
   */
   //var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?'
   if(cap){
+    // CON HTTP GET
+
     var url='https://script.google.com/macros/s/AKfycbx1jMj101jA8O0DcVEY2nqMsMwYmOZN5Krvh6ZASNrWwvNKfu_j/exec?'+
       'action=wsolicitud&ca1='+nombre+
       '&ca2='+tel+
       '&ca3='+msj+
       '&ca4='+cap;
-      //var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?'
-      //+'action=wgu&a=3794950807';
-      httpGet(url, cbSol, errSol);
+    //var url='https://script.google.com/macros/s/AKfycbxB98IS32T9mCUJbSccWmBg17LMRGmcvB7Kqa9lFcM_8eiM6rE/exec?'
+    //+'action=wgu&a=3794950807';
+    httpGet(url, cbSol, errSol);
+
+
+    //con HTTP POST
+    /*
+    var formkey = "1n5An84TrTn4abT_QXJYc4-1fwhzBpLWEkYGsVt-4fvI";
+    var data = {
+      "entry.483622950":nombre,
+      "entry.2057588626":tel,
+      "entry.34134450":"Desde Web",
+      "entry.738188072":msj,
+    }
+    var url="https://docs.google.com/forms/d/" + formkey + "/formResponse";
+    httpPost(url, data,finished , errSol);
+    */
+
   } else {
     //console.log('sin cap');
   }
+
+
   function cbSol(data){
     //console.log('resp:'+data);
     if(data=='1'){
@@ -109,9 +128,27 @@ function sendForm(){
       document.getElementById('pExito').style.display='block';
     }
   }
-  function errSol(err){
-    console.log('err:'+err);
+  /*
+  function finished(res) {
+    //var data = JSON.parse(res.response);
+    //console.log('data:'+data);
+
+    console.log('RESP:'+res);
   }
+  */
+  function errSol(res){
+    /*
+    //var data = JSON.parse(res);
+    //console.log('data:'+data);
+    for(item in res){
+      //console.log(datos[item].key+'-'+datos[item].value);
+      console.log(item +'-'+res[item]);
+    }
+    console.log('RESP:'+res.statusCode);
+    */
+    //console.log(res);    //VER ERROR
+  }
+
 }
 
 
